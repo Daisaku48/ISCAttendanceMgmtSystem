@@ -1,0 +1,245 @@
+﻿@using ISCAttendanceMgmtSystem.COM.Entity.Session
+@using ISCAttendanceMgmtSystem.COM.Models
+@model TopViewModels
+@{
+    ViewBag.Title = "勤怠管理システム";
+}
+@Styles.Render("~/Content/css/top")
+
+
+
+<script type="text/javascript">
+    //オンロードイベント
+    $(window).on('load', function () {
+        @*    表示判定*@
+        @if (TempData["AttendanceStatusMessage"] != null)
+        {
+            //確認表示
+            @:showStatusSelect('ステータス選択', '@Html.Raw(TempData["AttendanceStatusMessage"])', false, false,false);
+            TempData["AttendanceStatusMessage"] = null;
+        }
+    });
+</script>
+
+
+
+
+@*メニューボタン*@
+@*後に別オブジェクトへ移動--開始*@
+<div class="DateTime">
+    <script type="text/javascript">
+
+    </script>
+</div>
+@*後に別オブジェクトへ移動--終了*@
+
+@using (Html.BeginForm("Index", "Top", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.HiddenFor(m => m.TopView.StandardDate)
+    @Html.HiddenFor(m => m.TopView.StandardTime)
+    @Html.HiddenFor(m => m.TopView.StandardDateTime)
+    @Html.AntiForgeryToken()
+
+    @*標準時間表示コンテンツ*@
+    <div class="ViewTime-group">
+        <div>
+            <p><span id="Today"></span></p>
+            <p><span id="Time"></span></p>
+        </div>
+    </div>
+
+    @*出勤関連コンテンツ*@
+    <div class="begin-group">
+        @*2023-10-30 iwai-tamura upd-str ------*@
+        @if (Model.TopView.ViewStartTime == "" && Model.TopView.ViewEndTime == ""){
+        @*@if (Model.TopView.ViewStartTime == ""){*@
+        @*2023-10-30 iwai-tamura upd-str ------*@
+            <input type="submit" name="Begin" value="出勤" />
+        } else
+        {
+            <div class="begin-disabled">出勤</div>
+        }
+
+        @*2023-10-30 iwai-tamura upd-str ------*@
+        @*javascriptにてスタートタイムを使用する為、divタグにIDを追加*@
+        <div class="view-work-time" id="viewStartTime">
+            @*<div class="view-work-time">*@
+            @*2023-10-30 iwai-tamura upd-end ------*@
+            @Html.DisplayFor(m => m.TopView.ViewStartTime)
+        </div>
+    </div>
+
+
+    @*2023-10-30 iwai-tamura upd-str ------*@
+    @*ステータス関連コンテンツ*@
+    <div class="status-group">
+        @if (Model.TopView.ViewStartTime == ""|| Model.TopView.ViewEndTime != "")
+        {
+            <div class="status-disabled">ステータス</div>
+        } else
+        {
+            <input type="button" id="dmyStatus" name="DmyStatus" value="ステータス" class="btn-default" />
+        }
+        <div class="view-status">
+            @Html.DisplayFor(m => m.TopView.ViewStatus)
+        </div>
+    </div>
+    @*2023-10-30 iwai-tamura upd-end ------*@
+
+    @*退勤関連コンテンツ*@
+    <div class="finish-group">
+        @if (Model.TopView.ViewEndTime == "")
+        {
+            @*2023-02-08 iwai-tamura upd-str ------*@
+            <input type="button" id="dmyFinish" name="DmyFinish" value="退勤" class="btn-default" />
+            @*<input type="submit" id ="dmyFinish" name="DmyFinish" value="退勤" class="btn-default" />*@
+            @*2023-02-08 iwai-tamura upd-end ------*@
+        } else
+        {
+            <div class="finish-disabled">退勤</div>
+        }
+        <div class="view-work-time">
+            @Html.DisplayFor(m => m.TopView.ViewEndTime)
+        </div>
+    </div>
+
+
+    @*2023-02-01 iwai-shibuya add-str ------*@
+    @*一覧更新*@
+    <div class="update-group">
+        <a href="@Url.Action("Index", "Top")"><img id="updatelogo" src="~/Content/img/update.png" height="30" /></a>
+    </div>
+    @*2023-02-01 iwai-shibuya add-end ------*@
+
+    <!--一覧-->
+    <div class="row top17">
+        <div class="col-xs-1"></div>
+        <div class="col-xs-10 table-scroll">
+            <table class="table-bordered table-striped table-ecell-show mb-zero table-sch">
+                <colgroup>
+                    @*2023-02-08 iwai-tamura upd-str ------*@
+                    <col style="width:220px" />
+                    <col style="width:120px" />
+                    <col style="width:100px" />
+                    <col style="width:80px" />
+                    <col style="width:80px" />
+                    @*2024-09-10 iwai-tamura upd-str ------*@
+                    <col style="width:140px;" />
+@*                    <col style="width:100px;" />*@
+                    @*2024-09-10 iwai-tamura upd-end ------*@
+                    <col style="width:120px" />
+                    @*2024-09-10 iwai-tamura upd-str ------*@
+                    <col style="width:206px" />
+                    @*<col style="width:246px" />*@
+                    @*2024-09-10 iwai-tamura upd-end ------*@
+
+                    @*<col style="width:250px" />
+                        <col style="width:150px" />
+                        <col style="width:150px" />
+                        <col style="width:150px" />
+                        <col style="width:150px" />
+                        <col style="width:150px" />
+                        <col style="width:150px" />*@
+                    @*2023-02-08 iwai-tamura upd-end ------*@
+                </colgroup>
+                <thead>
+                    <tr style="background-color: #ebe2c5;">
+                        <th class="sch-th" rowspan="2">部門名</th>
+                        <th class="sch-th" rowspan="2">名前</th>
+                        <th class="sch-th" rowspan="2">ステータス</th>
+                        @*<th class="sch-th" rowspan="1" colspan="2">時間外</th>*@
+                        @*2023-02-08 iwai-tamura upd-str ------*@
+                        @*<th class="sch-th" rowspan="1" colspan="2">予定</th>*@
+                        @*2023-02-08 iwai-tamura upd-end ------*@
+                        <th class="sch-th" rowspan="1" colspan="2">実績</th>
+                        @*2023-02-08 iwai-tamura upd-str ------*@
+                        <th class="sch-th upd-th ptn-th" rowspan="2" style="border-left: double #ddd;">修正<br>実施時刻</th>
+                        <th class="sch-th upd-th" rowspan="2">修正者</th>
+                        <th class="sch-th upd-th" rowspan="2">事由</th>
+                        @*2023-02-08 iwai-tamura upd-end ------*@
+                    </tr>
+                    <tr style="background-color: #ebe2c5;">
+                        @*2023-02-08 iwai-tamura upd-str ------*@
+                        <th class="sch-th" style="width:80px;">開始</th>
+                        <th class="sch-th" style="width:80px;">終了</th>
+                        @*<th class="sch-th" style="width:60px;">開始</th>
+                            <th class="sch-th" style="width:60px;">終了</th>
+                            <th class="sch-th" style="width:60px;">開始</th>
+                            <th class="sch-th" style="width:60px;">終了</th>*@
+                        @*2023-02-08 iwai-tamura upd-end ------*@
+                    </tr>
+                </thead>
+            </table>
+
+            <table class="table table-bordered table-striped table-ecell-show scrollTable">
+                <tbody class="tblscroll" id="items">
+                    @if (Model != null && Model.AttendanceRecordViewList != null)
+                    {
+                        foreach (TodayAttendanceRecordViewListModel row in Model.AttendanceRecordViewList)
+                        {
+                            <tr>
+                                @*2023-02-08 iwai-tamura upd-str ------*@
+                                <td style="width: 220px;">@Html.DisplayTextFor(m => row.DepartmentName)</td>
+                                <td style="width: 120px;">@Html.DisplayTextFor(m => row.EmployeeName)</td>
+                                @*2023-02-01 iwai-shibuya add-str ------*@
+                                <td style="width: 100px; color: @row.AttendanceStatusColor;" class="text-center">@Html.DisplayTextFor(m => row.AttendanceStatus)</td>
+                                @*<td style="width: 100px;" class="text-center">@Html.DisplayTextFor(m => row.AttendanceStatus)</td>*@
+                                @*2023-02-01 iwai-shibuya add-str ------*@
+                                <td style="width: 80px;" class="text-center">@Html.DisplayTextFor(m => row.BiginTime)</td>
+                                <td style="width: 80px;" class="text-center">@Html.DisplayTextFor(m => row.FinishTime)</td>
+                                @*2024-09-10 iwai-tamura upd-str ------*@
+                                <td style="width: 140px; border-left:double #ddd;" class="text-center">@Html.DisplayTextFor(m => row.UpdateTime)</td>
+                                @*<td style="width: 100px; border-left:double #ddd;" class="text-center">@Html.DisplayTextFor(m => row.UpdateTime)</td>*@
+                                @*2024-09-10 iwai-tamura upd-end ------*@
+                                <td style="width: 120px;">@Html.DisplayTextFor(m => row.UpdateEmployeeName)</td>
+                                @*2024-09-10 iwai-tamura upd-str ------*@
+                                <td style="width: 204px; max-width: 204px; ">@Html.DisplayTextFor(m => row.UpdateComment)</td>
+@*                                <td style="width: 246px; max-width: 246px; ">@Html.DisplayTextFor(m => row.UpdateComment)</td>*@
+                                @*2024-09-10 iwai-tamura upd-end ------*@
+
+                                @*<td style="width: 250px;">@Html.DisplayTextFor(m => row.DepartmentName)</td>
+                                <td style="width: 150px;">@Html.DisplayTextFor(m => row.EmployeeName)</td>
+                                <td style="width: 150px;" class="text-center">@Html.DisplayTextFor(m => row.AttendanceStatus)</td>
+                                <td style="width: 150px;" class="text-center">@Html.DisplayTextFor(m => row.BiginTimePlan)</td>
+                                <td style="width: 150px;" class="text-center">@Html.DisplayTextFor(m => row.FinishTimePlan)</td>
+                                <td style="width: 150px;" class="text-center">@Html.DisplayTextFor(m => row.BiginTime)</td>
+                                <td style="width: 150px;" class="text-center">@Html.DisplayTextFor(m => row.FinishTime)</td>*@
+                                @*2023-02-08 iwai-tamura upd-end ------*@
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    @*2023-02-01 iwai-shibuya add-str ------*@
+    @*隠しボタンエリア*@
+    <div style="height:0px;">
+        @*2023-02-08 iwai-tamura upd-str ------*@
+        <input type="submit" id="finish" name="Finish" value="退勤" class="btn-default invisible" />
+        @*2023-02-08 iwai-tamura upd-end ------*@
+
+        @*2023-10-30 iwai-tamura upd-str ------*@
+        <input type="submit" id="change_status_attend" name="ChangeStatusAttend" value="出社" class="btn-default invisible" />
+        <input type="submit" id="change_status_telework" name="ChangeStatusTelework" value="テレワーク" class="btn-default invisible" />
+        <input type="submit" id="change_status_out" name="ChangeStatusOut" value="外出" class="btn-default invisible" />
+        <input type="submit" id="change_status_attend_begin" name="ChangeStatusAttendBegin" value="出社" class="btn-default invisible" />
+        <input type="submit" id="change_status_telework_begin" name="ChangeStatusTeleworkBegin" value="テレワーク" class="btn-default invisible" />
+        <input type="submit" id="change_status_out_begin" name="ChangeStatusOutBegin" value="外出" class="btn-default invisible" />
+        @*2023-10-30 iwai-tamura upd-end ------*@
+
+
+
+        <button type="submit" name="Update" value="更新" class="btn invisible" id="update">更新</button>
+    </div>
+    @*2023-02-01 iwai-shibuya add-end ------*@
+
+    <div style="height:0px;">
+        <button type="submit" name="Transition" id="loginbutton" value="Login" class="btn invisible">ログアウト</button>
+    </div>
+
+    @Scripts.Render("~/Scripts/js/top")
+
+}
+

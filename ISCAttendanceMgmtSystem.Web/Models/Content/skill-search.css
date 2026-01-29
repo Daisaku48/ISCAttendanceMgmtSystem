@@ -1,0 +1,52 @@
+﻿/*職能検索用カラム幅*/
+.tblscroll td,
+.tblscroll th {
+  width: 35px;
+}
+/*年度*/
+.tblscroll td + td,
+.tblscroll th + th {
+  width: 50px;
+}
+/*期間*/
+.tblscroll td + td + td,
+.tblscroll th + th + th{
+  width: 60px;
+}
+/*職能級*/
+.tblscroll td + td + td + td,
+.tblscroll th + th + th + th
+{
+  width: 80px;
+}
+/*社員番号 所属*/
+.tblscroll td + td + td + td + td,
+.tblscroll th + th + th + th + th,
+.tblscroll td + td + td + td + td + td + td + td,
+.tblscroll th + th + th + th + th + th + th + th {
+  width: 80px;
+}
+/*氏名*/
+.tblscroll td + td + td + td + td + td,
+.tblscroll th + th + th + th + th + th {
+  width: 160px;
+}
+/*カナ氏名*/
+.tblscroll td + td + td + td + td + td + td,
+.tblscroll th + th + th + th + th + th + th {
+  width: 210px;
+}
+/*判定　調整*/
+.tblscroll td + td + td + td + td + td + td + td + td,
+.tblscroll th + th + th + th + th + th + th + th + th,
+.tblscroll td + td + td + td + td + td + td + td + td + td,
+.tblscroll th + th + th + th + th + th + th + th + th + th {
+    width: 70px;
+} 
+
+/*　表示*/
+.tblscroll td + td + td + td + td + td + td + td + td + td + td,
+.tblscroll th + th + th + th + th + th + th + th + th + th + th {
+  width: 83px;
+}
+

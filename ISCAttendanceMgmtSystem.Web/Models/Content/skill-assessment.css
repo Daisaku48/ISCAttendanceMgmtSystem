@@ -1,0 +1,38 @@
+﻿.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+  vertical-align: middle;
+}
+
+.table > thead > tr > th {
+  vertical-align: middle;
+  border-bottom: 1px solid #ddd;
+}
+
+.skl-table > tbody > tr > td {
+  vertical-align: top;
+}
+
+.form-horizontal .form-group-ml-zero {
+  margin-left: 0px;
+}
+
+/*
+.pad-zero {
+  padding :0px;
+}
+.head-left{
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  float:left;
+}
+.head-end{
+  border: 1px solid #ddd;
+  float:left;
+}
+
+  */

@@ -1,0 +1,309 @@
+﻿/* 2022-99-99 iwai-miki add str */
+@charset "UTF-8";
+
+/* ログイン画面 - */
+form {
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 560px;
+    margin: 50px auto 100px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+form h1, form p {
+    font-weight: 800;
+}
+
+form p {
+    font-size: 20px;
+    margin: 5px auto;
+}
+
+    form input[type = "text"], form input[type = "password"] {
+        border: 0;
+        background: none;
+        display: block;
+        margin: 10px auto;
+        border: 2px solid #00A19D;
+        padding: 20px 10px;
+        width: 200px;
+        outline: none;
+        background-color: #FFF;
+        border-radius: 24px;
+        transition: 0.25s;
+        text-align: center;
+        font-size: 15px;
+    }
+
+        form input[type = "text"]:focus, form input[type = "password"]:focus {
+            width: 280px;
+            background-color: #E8F0FE;
+            border: 2px solid #00A19D;
+        }
+
+form input[type = "submit"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    border: 2px solid #FFB344;
+    padding: 15px 10px;
+    width: 200px;
+    outline: none;
+    color: #666;
+    font-weight: 800;
+    border-radius: 25px;
+    transition: 0.25s;
+    text-align: center;
+    cursor: pointer;
+}
+
+form input[type = "submit"]:hover {
+    background-color: #FFB344;
+    border: 2px solid #FFB344;
+    color: #FFF;
+    left: 80%;
+}
+
+/* すべてのページに適用 - フッター - */
+.footer {
+    background-repeat: no-repeat;
+    margin-top: 30px;
+    padding: -4px 15px 20px 15px;
+    font-size: 12px;
+    color: #3f5170;
+}
+
+/* 個別のスタイル */
+/* index.html */
+.keyvisual {
+    margin: 15px 0 0 0;
+}
+
+.news-item {
+    margin: 0;
+}
+
+/* about.html */
+.shop-photo {
+    float: left;
+    padding: 0 1em 1em 0;
+}
+
+.clear {
+    clear: both;
+}
+/* テーブル */
+.info {
+    border-collapse: collapse;
+}
+
+    .info th, .info td {
+        padding: 8px;
+        border: 1px solid #bec2c7;
+        text-align: left;
+    }
+
+    .info th {
+        background-color: #dde2ea;
+        width: 90px;
+        color: #3f5170;
+        vertical-align: top;
+    }
+
+/* menu.html */
+.menu-item {
+    display: flex;
+    border-bottom: 1px dashed #bec2c7;
+    padding: 20px 8px;
+}
+
+.menu-photo {
+    margin-right: 16px;
+    flex: 1 1 auto;
+}
+
+.menu-text {
+    flex: 0 0 336px;
+}
+
+/* access.html */
+.map {
+    text-align: center;
+}
+
+/* contact.html */
+form div {
+    padding: 12px;
+    border-bottom: 1px dashed #bec2c7;
+}
+
+select {
+    width: 30em;
+}
+
+input[name="subject"] {
+    width: 30em;
+}
+
+textarea {
+    width: 30em;
+    height: 6em;
+}
+
+input[type="submit"] {
+    margin: 20px 0;
+    width: 30em;
+}
+
+/* スマートフォン向けCSS */
+@media (max-width: 767px) {
+    /* 全体 - ナビゲーション */
+    .wrapper {
+        margin: 0 8px;
+    }
+
+    .logo {
+        margin: 30px 0;
+    }
+
+        .logo img {
+            width: 200px;
+        }
+
+    .nav {
+        background-color: #dfddda;
+    }
+
+        .nav li {
+            display: block;
+        }
+
+    /* menu.html - 横並び解除 */
+    .menu-item {
+        display: block;
+    }
+
+    .menu-photo {
+        margin-right: 0;
+        width: 100%;
+    }
+
+    .menu-text {
+        width: 100%;
+    }
+
+    /* contact.html - フォーム */
+    select {
+        width: 100%;
+    }
+
+    input[name="subject"] {
+        width: 100%;
+    }
+
+    textarea {
+        width: 100%;
+    }
+
+    input[type="submit"] {
+        margin: 20px 0;
+        width: 100%;
+    }
+}
+
+.dropmenu {
+    list-style-type: none;
+    padding: 0;
+}
+
+
+    .dropmenu li {
+        position: relative;
+        width: 20%;
+        float: left;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+        .dropmenu li a {
+            display: block;
+            margin: 0;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        /*    .dropmenu li:hover > a {
+        background: #6e7c0c;
+    }*/
+        /*.dropmenu > li:hover > a {
+	border-radius: 3px 3px 0 0;
+}*/
+
+        .dropmenu li ul {
+            list-style: none;
+            position: absolute;
+            top: 140%;
+            left: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dropmenu li:last-child ul {
+            left: -100%;
+            width: 100%
+        }
+
+        .dropmenu li ul li {
+            overflow: hidden;
+            width: 150%;
+            height: 0;
+        }
+
+            .dropmenu li ul li a {
+                padding: 13px 15px;
+                text-align: left;
+                font-size: 14px;
+                font-weight: bold;
+                width: 250px;
+                /*width: max-content;*/
+            }
+
+        .dropmenu li:hover ul li {
+            overflow: visible;
+            height: 38px;
+            border-top: 1px solid #7c8c0e;
+            border-bottom: 1px solid #616d0b;
+        }
+
+            .dropmenu li:hover ul li:first-child {
+                border-top: 0;
+            }
+
+            .dropmenu li:hover ul li:last-child {
+                border-bottom: 0;
+            }
+
+
+                .dropmenu li:hover ul li:last-child a {
+                    border-radius: 0 0 3px 3px;
+                }
+
+.dropdown__lists {
+    visibility: hidden; /*デフォルトでは非表示の状態にしておく*/
+    opacity: 0; /*不透明度0*/
+    transition: all .3s; /*表示の変化を0.3秒に指定*/
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    left: 0;
+}
+
+.gnavi__list:hover .dropdown__lists {
+    visibility: visible; /*Gナビメニューにホバーしたら表示*/
+    opacity: 1; /*不透明度1*/
+}
+/* 2022-99-99 iwai-miki add end */

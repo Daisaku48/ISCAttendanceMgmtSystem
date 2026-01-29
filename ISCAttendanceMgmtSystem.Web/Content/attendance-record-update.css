@@ -1,0 +1,163 @@
+﻿@charset "UTF-8";
+
+hr.group-border {
+    border-top: 2px solid #aaa;
+}
+/*検索関連コンテンツ*/
+.search-group {
+    display: block;
+    display: inline-block;
+}
+.search-title-label {
+    font-size: 18px;
+}
+.search-input {
+    margin-right: 5px;
+}
+
+select.search-input {
+    min-width: 100px;
+}
+
+.search1-label {
+    margin-right: 5px;
+}
+.search2-label {
+    margin-left: 30px;
+}
+.search-group input[type="button"] {
+    font-size: 16px;
+    width: 100px;
+    height: 30px;
+    margin-left: 30px;
+    padding: 0.5rem;
+    border-radius: .6rem;
+    border: none;
+    text-align: center;
+    color: #FFF;
+    letter-spacing: .1rem;
+    position: relative;
+    background-color: #FFB344;
+}
+
+    .search-group input[type="button"]:active {
+        box-shadow: 0px 0px 5px 2px #FFC877;
+    }
+
+/*使用不可時*/
+.search-group input[type="button"]:disabled {
+    filter: brightness(0.9);    
+    pointer-events: none;
+}
+
+/*入力関連コンテンツ*/
+.input-group {
+    display: block;
+    display: inline-block;
+}
+
+.input-title-label {
+    font-size: 18px;
+}
+
+.input-input {
+    margin-right: 5px
+}
+
+.input1-label {
+}
+.input2-label {
+    margin-left: 40px;
+}
+.comment-input {
+    max-width:none;
+    width: 500px;
+}
+.input-group input[type="button"] {
+    font-size: 16px;
+    width: 100px;
+    height: 30px;
+    margin-left: 30px;
+    padding: 0.5rem;
+    border-radius: .6rem;
+    border: none;
+    text-align: center;
+    color: #FFF;
+    letter-spacing: .1rem;
+    position: relative;
+}
+
+    .input-group input[type="button"]:active {
+        box-shadow: 0px 0px 3px 0px #109fe9;
+    }
+#dmysave {
+    background-color: #0095D9;
+}
+
+#dmycancel {
+    background-color: #fff;
+    color: #0095D9;
+    border: 1px solid #0095D9;
+}
+
+/*使用不可時*/
+.input-group input[type="button"]:disabled {
+    filter: brightness(0.9);
+    pointer-events: none;
+}
+
+
+
+
+/* === ラジオボタン設定 === */
+input[type=radio] {
+    display: none; /* ラジオボタンを非表示にする */
+}
+
+.radio-label {
+    background: #fff;
+    margin: 0px; /* ラベル外側の余白を指定する */
+    border: 1px solid #ddd;
+    font-weight: bold;
+    width: 200px;
+    text-align: center;
+}
+
+input[type="radio"]:checked + label {
+    border: 0px;
+    background: #fff; /* マウス選択時の背景色を指定する */
+    color: #fff; /* マウス選択時のフォント色を指定する */
+}
+
+input[type=radio] + label[disabled] {
+    border: 0px;
+    border: 1px solid #ddd;
+    background: #ddd; /* マウス選択時の背景色を指定する */
+    color: #e05d5d; /* マウス選択時のフォント色を指定する */
+    pointer-events: none;
+}
+
+input[type="radio"]:checked + label[disabled] {
+    border: 0px;
+    border: 1px solid #ddd;
+    background: #bbb; /* マウス選択時の背景色を指定する */
+    color: #000; /* マウス選択時のフォント色を指定する */
+    pointer-events: none;
+}
+
+/*個別ラベル指定*/
+input[type="radio"]:checked + .updatetype-radio1-label {
+    border: 0px;
+    background: #f96; /* マウス選択時の背景色を指定する */
+}
+
+input[type="radio"]:checked + .updatetype-radio2-label {
+    border: 0px;
+    background: #f96; /* マウス選択時の背景色を指定する */
+}
+
+input[type="radio"]:checked + .updatetype-radio3-label {
+    border: 0px;
+    background: #f96; /* マウス選択時の背景色を指定する */
+}
+

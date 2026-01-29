@@ -1,0 +1,589 @@
+﻿
+/*2022-99-99 iwai-shibuya add */
+body {
+	padding-top: 0px;
+	padding-bottom: 0px;
+	background-color: #FFF8E5;
+}
+
+.body-content {
+	padding-left: 15px;
+	padding-right: 15px;
+	min-height: 700px;
+}
+
+.dl-horizontal dt {
+	white-space: normal;
+}
+
+input,
+select {
+	max-width: 280px;
+}
+
+/*全体のフォント*/
+body {
+	font-family: sans-serif;
+	font-size: 15px;
+	color: #E05D5D;
+}
+/*タイトル文字色*/
+
+/*2023-02-01 iwai-shibuya add str */
+img#corporatelogo {
+	margin-top: 18px;
+	margin-right: 0px;
+	margin-left: 36px;
+	/*margin-bottom: 10px;*/
+}
+/*2023-02-01 iwai-shibuya add end */
+
+/*2023-02-01 iwai-shibuya add str */
+a {
+	color: #004eba;
+	text-decoration: none;
+}
+
+	a:hover,
+	a:focus {
+		color: #004eba;
+		text-decoration: none;
+	}
+/*2023-02-01 iwai-shibuya add end */
+
+.navbar-title {
+	color: #E05D5D;
+	font-size: 30px;
+	margin-right: 0px;
+	margin-bottom: 10px;
+	/*2023-02-01 iwai-shibuya add str */
+	margin-left: 126px;
+	/*2023-02-01 iwai-shibuya add end */
+	padding-right: 5px;
+	/*2023-02-01 iwai-shibuya upd str */
+	padding-bottom: 8px;
+	/*padding-bottom: 5px;*/
+	/*2023-02-01 iwai-shibuya upd end */
+	/*2023-02-01 iwai-shibuya del str */
+	/*margin-top: 10px;*/
+	/*padding-top: 5px;*/
+	/*2023-02-01 iwai-shibuya del end */
+	padding-left: 5px;
+}
+/*2023-02-01 iwai-shibuya add str */
+li.nav.navbar-text {
+	padding-top: 13px;
+
+}
+/*2023-02-01 iwai-shibuya add end */
+
+/*ナビの文字色*/
+/*.navbar-inverse .navbar-brand {
+	color: #E05D5D;
+}*/
+/*	.navbar-inverse .navbar-brand:hover,
+	.navbar-inverse .navbar-brand:focus {
+		color: #000;
+	}*/
+.navbar-inverse .navbar-nav > li > a {
+	color: #ffffff;
+	font-size: 15px;
+	display: inline;
+	list-style-type: none;
+	padding-right: 30px;
+	margin: 0 0 0 0;
+	/*padding: 15px 15px 30px 20px;*/
+	/*color: #3c454d;*/
+	text-decoration: none;
+	/*2023-02-01 iwai-shibuya add str*/
+	display: inline-block;
+	transition: all .3s ease 0s;
+	text-decoration: none;
+	/*2023-02-01 iwai-shibuya add end*/
+}
+
+	.navbar-inverse .navbar-nav > li > a:hover,
+	.navbar-inverse .navbar-nav > li > a:focus {
+		/*2023-02-01 iwai-shibuya del str*/
+		/*color: #9d9d9d;*/
+		/*2023-02-01 iwai-shibuya del end*/
+		/*2023-02-01 iwai-shibuya add str*/
+		cursor: pointer;
+		transform: scale(1.2);
+		/*2023-02-01 iwai-shibuya add end*/
+		background-color: transparent;
+	}
+
+	.navbar-inverse .navbar-nav > li > a:link {
+		/*color: #3c454d;*/
+		text-decoration: none;
+	}
+
+	.navbar-inverse .navbar-nav > li > a:visited {
+		/*color: #3c454d;*/
+		text-decoration: none;
+	}
+
+	.navbar-inverse .navbar-nav > li > a:active {
+		color: #5a9bc0;
+		text-decoration: none;
+	}
+
+
+/*メニューバー背景色*/
+div > .container {
+	background-color: #00A19D;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 20px;
+	margin-left: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	width: auto;
+}
+
+
+
+/*内部余白左右*/
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+.menu-bar {
+	padding-left: 100px;
+}
+
+
+/*枠線囲みのボックス*/
+.well-ex {
+	min-height: 20px;
+	margin-bottom: 20px;
+	background-color: #00A19D;
+	border: 1px solid #e3e3e3;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+	position: relative;
+}
+/*枠線囲みのボックスヘッダ*/
+.well-ex-header {
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-topright: 4px;
+	-webkit-border-top-left-radius: 4px;
+	-webkit-border-top-right-radius: 4px;
+	position: relative;
+	width: 100%;
+	background-color: #ebe2c5;
+	font-weight: bold;
+	padding: 3px 10px;
+	color: #461d01;
+}
+/*枠線囲みのボックスコンテンツ部*/
+.well-ex-content {
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	padding: 3px 20px;
+	position: relative;
+	border: 1px solid #ebe2c5;
+	width: 100%;
+	min-height: 200px;
+	background-color: white;
+}
+
+/*最低の高さ 50*/
+.min-ht-50 {
+	min-height: 50px;
+}
+
+/*最低の高さ 80*/
+.min-ht-80 {
+	min-height: 80px;
+}
+
+/*最低の高さ 100*/
+.min-ht-100 {
+	min-height: 100px;
+}
+/*最低の高さ 200*/
+.min-ht-200 {
+	min-height: 200px;
+}
+
+/*上部余白 5*/
+.top5 {
+	margin-top: 5px;
+}
+/*上部余白 7*/
+.top7 {
+	margin-top: 7px;
+}
+/*上部余白 10*/
+.top10 {
+	margin-top: 10px;
+}
+/*上部余白 15*/
+.top15 {
+	margin-top: 15px;
+}
+/*上部余白 17*/
+.top17 {
+	margin-top: 17px;
+}
+/*上部余白 30*/
+.top30 {
+	margin-top: 30px;
+}
+
+.left5 {
+	margin-left: 5px;
+}
+
+/*テーブル全体設定*/
+.table {
+	width: 100%;
+	table-layout: fixed;
+	word-wrap: break-word;
+}
+/*テーブル下部余白*/
+.table {
+	margin-bottom: 10px;
+}
+	/*テーブル内部余白*/
+	.table > thead > tr > th,
+	.table > tbody > tr > th,
+	.table > tfoot > tr > th,
+	.table > thead > tr > td,
+	.table > tbody > tr > td,
+	.table > tfoot > tr > td {
+		padding: 4px;
+	}
+
+/*テーブル枠線なし全体*/
+.table-no-bordered {
+	border-top: none;
+}
+
+	/*テーブル枠線なしレコード*/
+	.table-no-bordered > thead > tr > th,
+	.table-no-bordered > tbody > tr > th,
+	.table-no-bordered > tfoot > tr > th,
+	.table-no-bordered > thead > tr > td,
+	.table-no-bordered > tbody > tr > td,
+	.table-no-bordered > tfoot > tr > td {
+		border-top: none;
+		padding: 0px;
+	}
+
+	.table-no-bordered > thead > tr > th,
+	.table-no-bordered > thead > tr > td {
+		border-top: none;
+	}
+
+/*ラベル*/
+label {
+	display: inline-block;
+	max-width: 100%;
+	margin-bottom: 0px;
+	font-weight: bold;
+}
+
+/*空セル表示設定*/
+.table-ecell-show > tbody > tr > td {
+	empty-cells: show;
+	height: 25px;
+}
+
+/*フォームコントロール用*/
+.form-control {
+	padding: 1px 3px;
+	height: 25px;
+}
+/*下部余白 0*/
+.form-group-custom {
+	margin-bottom: 0px;
+}
+
+/*右余白 20*/
+.form-group-custom-rg-mg {
+	margin-right: 20px;
+}
+
+/*テキストエリアカスタム*/
+.form-control-custom-textarea {
+	width: 100%;
+	margin-bottom: 10px;
+}
+/*テキストエリアカスタム*/
+.form-control-ta {
+	display: block;
+	width: 100%;
+	height: 34px;
+	padding: 3px 6px;
+	font-size: 11px;
+	line-height: 1.42857143;
+	color: #555;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+	-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+	/*テキストエリアカスタム フォーカス*/
+	.form-control-ta:focus {
+		border-color: #66afe9;
+		outline: 0;
+		-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+		box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+	}
+	/*テキストエリアカスタム 色指定*/
+	.form-control-ta::-moz-placeholder {
+		color: #999;
+		opacity: 1;
+	}
+	/*テキストエリアカスタム 色指定*/
+	.form-control-ta:-ms-input-placeholder {
+		color: #999;
+	}
+	/*テキストエリアカスタム 色指定*/
+	.form-control-ta::-webkit-input-placeholder {
+		color: #999;
+	}
+	/*テキストエリアカスタム カーソル指定*/
+	.form-control-ta[disabled],
+	.form-control-ta[readonly],
+	fieldset[disabled] .form-control-ta {
+		cursor: not-allowed;
+		background-color: #eee;
+		opacity: 1;
+	}
+/*テキストエリアカスタム 高さ*/
+textarea.form-control-ta {
+	height: auto;
+}
+
+/*テーブルスクロール用*/
+table.scrollTable {
+	height: 300px;
+	display: block;
+}
+/*テーブルスクロール用ヘッダ*/
+.scrollTable > thead {
+	height: 20px;
+	width: 100%;
+}
+/*テーブルスクロール用ボディ*/
+.scrollTable > tbody {
+	overflow-y: scroll;
+	overflow-x: hidden;
+	height: 300px;
+	width: 100%;
+	position: absolute;
+}
+	/*テーブルスクロール用幅*/
+	.scrollTable > tbody > tr {
+		width: 100%;
+	}
+
+/*検索結果テーブルヘッダ用*/
+.sch-th {
+	padding-bottom: 4px;
+	padding-left: 4px;
+	padding-right: 4px;
+	padding-top: 4px;
+	text-align: center;
+}
+
+/*検索結果テーブルヘッダ用チェックボックス*/
+.sch-th-chk {
+	padding-bottom: 4px;
+	padding-left: 5px;
+	padding-right: 4px;
+	padding-top: 4px;
+}
+
+.table-sch > thead > tr > th {
+	border: 1px solid #ddd;
+	border-left: 0px;
+	border-right: 0px;
+}
+
+.table-sch > thead > tr > th {
+	border-bottom-width: 0px;
+}
+
+/* ローディング用 */
+/* 不可視状態 */
+.loading-panel-off {
+	visibility: hidden;
+	display: none;
+	position: absolute;
+	top: -100px;
+	left: -100px;
+}
+
+/* 可視状態 */
+.loading-panel-on {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	visibility: visible;
+	display: block;
+	width: 100%;
+	height: 100%;
+	/*
+	background-image: url('./bk.png');
+	background-repeat: repeat;
+	overflow:hidden;
+*/
+	background-color: #666;
+	z-index: 999;
+	/*	filter:alpha(opacity=85);
+	-moz-opacity:0.85;*/
+	padding-top: 20%;
+}
+
+/* メッセージ部*/
+.inner-loading-panel {
+	text-align: center;
+	width: 66%;
+	background-color: #FAFAFA;
+	color: blue;
+	font-size: large;
+	border: dashed 2px #111;
+	padding: 9px;
+}
+
+/*テーブルタグ共通*/
+.w5 {
+	width: 5px;
+}
+
+.w10 {
+	width: 10px;
+}
+
+.w30 {
+	width: 30px;
+}
+
+.w40 {
+	width: 40px;
+}
+
+.w50 {
+	width: 50px;
+}
+
+.w60 {
+	width: 60px;
+}
+
+.w70 {
+	width: 70px;
+}
+
+.w80 {
+	width: 80px;
+}
+
+.w90 {
+	width: 90px;
+}
+
+.w100 {
+	width: 100px;
+}
+
+.w120 {
+	width: 120px;
+}
+
+.w150 {
+	width: 150px;
+}
+
+.w160 {
+	width: 160px;
+}
+
+.h24 {
+	height: 24px;
+}
+
+.h34 {
+	height: 34px;
+}
+
+.h39 {
+	height: 39px;
+}
+
+.h44 {
+	height: 44px;
+}
+
+.h48 {
+	height: 48px;
+}
+
+.h68 {
+	height: 68px;
+}
+
+.mb-zero {
+	margin-bottom: 0px;
+}
+/*テキストボックス横のラベル位置調整*/
+.td-padding {
+	padding-top: 14px;
+}
+
+/*.btn{
+    box-shadow: 3px 3px 7px #888888;
+}*/
+
+.btn-default {
+	background-color: #e3e3e3;
+}
+
+.btn-xs {
+	font-size: 10px;
+}
+
+.navbar-inverse .navbar-text {
+	color: #fff;
+}
+
+.ime-disabled {
+	/*ime-mode:disabled;*/
+}
+
+.fm-ctr-rdonly {
+}
+
+	.fm-ctr-rdonly[readonly],
+	fieldset[disabled] .fm-ctr-rdonly {
+		cursor: pointer;
+		background-color: #fff;
+		opacity: 1;
+	}
+
+.fm-ctr-rdonly-tx {
+}
+
+	.fm-ctr-rdonly-tx[readonly],
+	fieldset[disabled] .fm-ctr-rdonly-tx {
+		cursor: not-allowed;
+		background-color: #eee;
+	}
+/*2022-99-99 iwai-shibuya add */

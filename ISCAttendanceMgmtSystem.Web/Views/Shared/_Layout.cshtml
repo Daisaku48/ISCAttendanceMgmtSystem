@@ -1,0 +1,153 @@
+﻿@using ISCAttendanceMgmtSystem.COM.Entity.Session
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewBag.Title - </title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jqueryold")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/html5shiv")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqueryuidp")
+    @Scripts.Render("~/Scripts/js/cmn")
+    @RenderSection("scripts", required: false)
+
+
+<script type="text/javascript">
+    //オンロードイベント
+    $(window).on('load', function () {
+        @*    表示判定*@
+        @if(TempData["Success"] != null) {
+            //アラート表示
+            @:showAlert('完了', '@TempData["Success"]');
+        }
+        @*    表示判定*@
+        @if (TempData["Confirmation"] != null)
+        {
+            //確認表示
+            @:showAlert('確認', '@Html.Raw(TempData["Confirmation"])');
+
+            TempData["Confirmation"] = null;
+        }
+        @if (TempData["ReferenceID"] != null) {
+            //確認表示
+            @:showMessage('アカウント追加', '@Html.Raw("以下のアカウント情報を参照しアカウント追加を行います。<br /><br />" + TempData["ReferenceID"] + "<br /><br />アカウント追加を実行しますか？")', 'AddAccount_Reference', true);
+                    TempData["ReferenceID"] = null;
+        }
+        @if (TempData["TakeOverMoveReference"] != null) {
+            //確認表示
+            @:showMessage('確認', '@Html.Raw(TempData["TakeOverMoveReference"])', 'DoTakeOverMoveSingle_Reference', true);
+                    TempData["TakeOverMoveReference"] = null;
+        }
+        @if (TempData["TakeOverAmendmentCompanyReference"] != null) {
+            //確認表示
+            @:showMessage('確認', '@Html.Raw(TempData["TakeOverAmendmentCompanyReference"])', 'DoTakeOverAmendmentCompany_Reference', true);
+            TempData["TakeOverAmendmentCompanyReference"] = null;
+        }
+
+
+
+    });
+    //ログアウトメッセージボックス
+    function logoutMessage() {
+        //ボタンクリック
+        showLogout(true, '');
+    }
+</script>
+
+</head>
+
+<body>
+    @*<body>*@
+    @*2023-02-01 iwai-shibuya upd-str ------タイトルをリンク化*@
+    @*<a href="/ISCAttendanceMgmtSystem/Top/Index"><img id="corporatelogo" src="~/Content/img/iwailogo.png" height="40" /></a>*@
+    <a href="@Url.Action("Index", "Top")"><img id="corporatelogo" src="~/Content/img/iwailogo.png" height="40" /></a>
+    <div class="navbar-title" style="position: relative;"><span style="position: absolute; bottom: 0;">@Html.ActionLink("勤怠管理システム", "Index", "Top")</span></div>
+    @*<div class="navbar-title" style="position: relative;"><img src="~/Content/img/iwailogo.png" height="40"><span style="position: absolute; bottom: 0;">@Html.ActionLink("勤怠管理システム", "Index", "Top")</span></div>*@
+    @*<div class="navbar-title" style="position: relative;"><img src="~/Content/img/iwailogo.png" height="40"><span style="position: absolute; bottom: 0;">勤怠管理システム</span></div>*@
+    @*2023-02-01 iwai-shibuya upd-end ------*@
+
+    <div class=" navbar-inverse">
+        <div class="container">
+
+            <div class="col-xs-10 menu-bar">
+                @{
+                    //ログイン判断
+                    bool isLogin = null == HttpContext.Current.Session["IsLogin"] ? false : (bool)HttpContext.Current.Session["IsLogin"];
+                    if (isLogin) {
+                        var lu = (LoginUser)HttpContext.Current.Session["LoginUser"];
+                        //ログアウト処理
+                        using (Html.BeginForm("LogOff", "Login", FormMethod.Post, new { id = "logoutForm" })) {
+                            @Html.AntiForgeryToken()
+
+                            //共通メニュー
+                            <ul class="nav navbar-nav navbar-left">
+                                @* Viewsのフォルダ名、オブジェクト名を指定するとクリック時にそのオブジェクトを開いてくれる *@
+                                <li class="navbar-text">@Html.ActionLink("TOP", "Index", "Top")</li>
+                                <li class="navbar-text">@Html.ActionLink("勤務実績確認", "Index", "AttendanceRecordView")</li>
+                                @* ソリューションに直接PDFを格納しリンク張ることでブラウザ上で表示、ダウンロードを行う。 *@
+                                <li class="navbar-text"><a href="~/Content/manual/社内勤怠管理システム_操作マニュアル.pdf" target="_blank">マニュアル</a></li>
+                                <li class="navbar-text">@Html.ActionLink("パスワード変更", "ChangePassword", "ChangePassword")</li>
+                                <li class="navbar-text"><a href="javascript:logoutMessage();">ログアウト</a></li>
+                            </ul>
+
+                            //管理メニュー
+                            <ul class="nav navbar-nav navbar-right">
+                                @*2023-03-01 iwai-tamura upd-str ---*@
+                                @*管理者用勤務実績確認*@
+                                @if (lu.AdminType == "Z" || lu.AdminType == "3" || lu.AdminType == "4" || lu.AdminType == "5" || lu.AdminType == "9") {
+                                    <li class="navbar-text">@Html.ActionLink("管理者用勤務実績確認", "Index", "AttendanceRecordManagerView")</li>
+                                }
+                                @*勤務実績修正*@
+                                @if (lu.AdminType == "Z" || lu.AdminType == "4" || lu.AdminType == "5" || lu.AdminType == "9") {
+                                    <li class="navbar-text">@Html.ActionLink("勤務実績修正", "Index", "AttendanceRecordUpdate")</li>
+                                }
+
+
+                                @*2023-02-01 iwai-tamura upd-str ---*@
+                                @*@if (lu.AdminType == "Z" || lu.AdminType == "4" || lu.AdminType == "5" || lu.AdminType == "9") {*@
+                                    @*2023-02-08 iwai-tamura upd-str ---*@
+                                    @*<li class="nav navbar-text">管理関連</li>*@
+                                    @*2023-02-08 iwai-tamura upd-end ---*@
+                                    @*2023-02-28 iwai-tamura upd-str ---*@
+                                    <!--<li class="navbar-text">@Html.ActionLink("管理者用勤務実績確認", "Index", "AttendanceRecordManagerView")</li>-->
+                                    @*2023-02-28 iwai-tamura upd-end ---*@
+                                    <!--<li class="navbar-text">@Html.ActionLink("勤務実績修正", "Index", "AttendanceRecordUpdate")</li>-->
+                                @*  }*@
+                                @*@if (lu.AdminType == "Z" || lu.AdminType == "5" || lu.AdminType == "9") {
+                                        <li class="nav navbar-text">管理関連</li>
+                                        <li class="navbar-text">@Html.ActionLink("勤務実績修正", "Index", "AttendanceRecordUpdate")</li>
+                                    }*@
+                                @*2023-02-01 iwai-tamura upd-end ---*@
+                                @*2023-03-01 iwai-tamura upd-end ---*@
+
+                                <li class="nav navbar-text">User：@lu.UserName (@lu.UserCode)</li>
+                            </ul>
+                        }
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+    <footer>
+        <hr />
+        <div>
+            <p>　　&copy;Copyright 1999- IWAI System Creative CO., INC ALL rights reserved.</p>
+        </div>
+    </footer>
+    @*ダイアログ用*@
+    <div id="show_dialog"></div>
+    @*ローディング用*@
+    <div align="center" id="loadingPanel" class="loading-panel-off" style=" background-image: url('../Content/img/bk.png'); background-repeat: repeat; overflow:hidden;">
+        <div id="innerLoadingPanel" class="inner-loading-panel"><img id="waitImage" src="../Content/img/726.GIF" /><br><span id="loadingMessage">In Processing・・・</span></div>
+    </div>
+</body>
+
+</html>

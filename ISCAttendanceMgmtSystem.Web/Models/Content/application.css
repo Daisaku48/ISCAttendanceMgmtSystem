@@ -1,0 +1,521 @@
+﻿/* 管理システム固有*/
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+/*
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+*/
+input,
+select {
+    max-width: 280px;
+}
+
+/*全体のフォント*/
+body {
+  font-family: "ＭＳ ゴシック", Gothic, sans-serif;
+    font-size:10px;
+}
+
+/*ナビの文字色*/
+.navbar-inverse .navbar-brand {
+  color: #fff;
+}
+
+/*内部余白左右*/
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+/*枠線囲みのボックス*/
+.well-ex {
+  min-height: 20px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid #e3e3e3;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+  position: relative;
+}
+/*枠線囲みのボックスヘッダ*/
+.well-ex-header {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  -moz-border-radius-topleft: 4px;
+  -moz-border-radius-topright: 4px;
+  -webkit-border-top-left-radius: 4px;
+  -webkit-border-top-right-radius: 4px;
+  position: relative;
+  width: 100%;
+  background-color: #ebe2c5;
+  font-weight: bold;
+  padding: 3px 10px;
+  color: #461d01;
+}
+/*枠線囲みのボックスコンテンツ部*/
+.well-ex-content {
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  padding: 3px 20px;
+  position: relative;
+  border: 1px solid #ebe2c5;
+  width: 100%;
+  /*  min-height: 200px;*/
+  background-color: white;
+}
+
+/*最低の高さ 50*/
+.min-ht-50 {
+  min-height: 50px;
+}
+
+/*最低の高さ 80*/
+.min-ht-80 {
+  min-height: 80px;
+}
+
+/*最低の高さ 100*/
+.min-ht-100 {
+  min-height: 100px;
+}
+/*最低の高さ 200*/
+.min-ht-200 {
+  min-height: 200px;
+}
+
+/*上部余白 5*/
+.top5 {
+  margin-top: 5px;
+}
+/*上部余白 7*/
+.top7 {
+  margin-top: 7px;
+}
+/*上部余白 10*/
+.top10 {
+  margin-top: 10px;
+}
+/*上部余白 15*/
+.top15 {
+  margin-top: 15px;
+}
+/*上部余白 17*/
+.top17 {
+  margin-top: 17px;
+}
+/*上部余白 30*/
+.top30 {
+  margin-top: 30px;
+}
+
+.left5 {
+  margin-left: 5px;
+}
+
+/*テーブル全体設定*/
+.table {
+  width: 100%;
+  table-layout: fixed;
+  word-wrap: break-word;
+}
+/*テーブル下部余白*/
+.table {
+  margin-bottom: 10px;
+}
+/*テーブル内部余白*/
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+  padding: 4px;
+}
+
+/*テーブル枠線なし全体*/
+.table-no-bordered {
+  border-top: none;
+}
+
+/*テーブル枠線なしレコード*/
+.table-no-bordered > thead > tr > th,
+.table-no-bordered > tbody > tr > th,
+.table-no-bordered > tfoot > tr > th,
+.table-no-bordered > thead > tr > td,
+.table-no-bordered > tbody > tr > td,
+.table-no-bordered > tfoot > tr > td {
+  border-top: none;
+  padding: 0px;
+}
+.table-no-bordered > thead > tr > th,
+.table-no-bordered > thead > tr > td {
+  border-top: none;
+}
+
+/*ラベル*/
+label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 0px;
+  font-weight: bold;
+}
+
+/*空セル表示設定*/
+.table-ecell-show > tbody > tr > td {
+  empty-cells: show;
+  height: 25px;
+}
+
+/*フォームコントロール用*/
+.form-control {
+  padding: 1px 3px;
+  height: 25px;
+}
+/*下部余白 0*/
+.form-group-custom {
+  margin-bottom: 0px;
+}
+
+/*右余白 20*/
+.form-group-custom-rg-mg {
+  margin-right: 20px;
+}
+
+/*テキストエリアカスタム*/
+.form-control-custom-textarea {
+  width: 100%;
+  margin-bottom: 10px;
+}
+/*テキストエリアカスタム*/
+.form-control-ta {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 3px 6px;
+  font-size: 11px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+/*テキストエリアカスタム フォーカス*/
+.form-control-ta:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
+/*テキストエリアカスタム 色指定*/
+.form-control-ta::-moz-placeholder {
+  color: #999;
+  opacity: 1;
+}
+/*テキストエリアカスタム 色指定*/
+.form-control-ta:-ms-input-placeholder {
+  color: #999;
+}
+/*テキストエリアカスタム 色指定*/
+.form-control-ta::-webkit-input-placeholder {
+  color: #999;
+}
+/*テキストエリアカスタム カーソル指定*/
+.form-control-ta[disabled],
+.form-control-ta[readonly],
+fieldset[disabled] .form-control-ta {
+  cursor: not-allowed;
+  background-color: #eee;
+  opacity: 1;
+}
+/*テキストエリアカスタム 高さ*/
+textarea.form-control-ta {
+  height: auto;
+}
+
+/*テーブルスクロール用*/
+table.scrollTable {
+  height: 300px;
+  display: block;
+}
+/*テーブルスクロール用ヘッダ*/
+.scrollTable > thead {
+  height: 20px;
+  width: 100%;
+}
+/*テーブルスクロール用ボディ*/
+.scrollTable > tbody {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 300px;
+  width: 100%;
+  position: absolute;
+}
+/*テーブルスクロール用幅*/
+.scrollTable > tbody > tr {
+  width: 100%;
+}
+
+/*検索結果テーブルヘッダ用*/
+.sch-th{
+  padding-bottom: 4px; 
+  padding-left: 4px; 
+  padding-right: 4px; 
+  padding-top: 4px; 
+  text-align: center;
+}
+
+/*2016-05-24 iwai-tamura add str -----*/
+/*決裁権限用検索結果テーブルヘッダ*/
+/*上司*/
+.sch-th2{
+  background-color: #ffcccc;
+  padding-bottom: 4px; 
+  padding-left: 4px; 
+  padding-right: 4px; 
+  padding-top: 4px; 
+  text-align: center;
+}
+/*目標管理関連*/
+.sch-th-object{
+  background-color: #d9edf7;
+  padding-bottom: 4px; 
+  padding-left: 4px; 
+  padding-right: 4px; 
+  padding-top: 4px; 
+  text-align: center;
+}
+/*職能判定関連*/
+.sch-th-skill{
+  background-color: #dff0d8;
+  padding-bottom: 4px; 
+  padding-left: 4px; 
+  padding-right: 4px; 
+  padding-top: 4px; 
+  text-align: center;
+}
+/*2016-05-24 iwai-tamura add end -----*/
+
+/*検索結果テーブルヘッダ用チェックボックス*/
+.sch-th-chk {
+  padding-bottom: 4px; 
+  padding-left: 5px; 
+  padding-right: 4px; 
+  padding-top: 4px; 
+}
+
+.table-sch > thead > tr > th{
+  border: 1px solid #ddd;
+  border-left: 0px; 
+  border-right: 0px; 
+}
+.table-sch > thead > tr > th {
+  border-bottom-width: 0px;
+}
+
+/* ローディング用 */
+/* 不可視状態 */
+.loading-panel-off {
+	visibility: hidden;
+	display: none;
+	position: absolute;
+	top: -100px;
+	left: -100px;
+}
+
+/* 可視状態 */
+.loading-panel-on {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	visibility: visible;
+	display: block;
+	width: 100%;
+	height: 100%;
+/*
+	background-image: url('./bk.png');
+	background-repeat: repeat;
+	overflow:hidden;
+*/
+	/*background-color: #666;*/
+	z-index: 999;
+	filter:alpha(opacity=85);
+	-moz-opacity:0.85;
+	padding-top: 20%;
+}
+
+/* メッセージ部*/
+.inner-loading-panel {
+	text-align: center;
+	width: 66%;
+	background-color: #FAFAFA;
+	color: blue;
+	font-size: large;
+	border: dashed 2px #111;
+	padding: 9px;
+}
+
+/*テーブルタグ共通*/
+.w5 {
+  width: 5px;
+}
+.w10 {
+  width: 10px;
+}
+.w30 {
+  width: 30px;
+}
+.w40 {
+  width: 40px;
+}
+.w50 {
+  width: 50px;
+}
+.w60 {
+  width: 60px;
+}
+.w70 {
+  width: 70px;
+}
+.w80 {
+  width: 80px;
+}
+.w90 {
+  width: 90px;
+}
+.w100 {
+  width: 100px;
+}
+.w120 {
+  width: 120px;
+}
+.w150 {
+  width: 150px;
+}
+.w160 {
+  width: 160px;
+}
+.h24 {
+  height: 24px;
+}
+.h34 {
+  height: 34px;
+}
+.h39 {
+  height: 39px;
+}
+.h44 {
+  height: 44px;
+}
+.h48 {
+  height: 48px;
+}
+.h68 {
+  height: 68px;
+}
+.mb-zero{
+  margin-bottom:0px;
+}
+/*テキストボックス横のラベル位置調整*/
+.td-padding{
+  padding-top:14px;
+}
+
+/*.btn{
+    box-shadow: 3px 3px 7px #888888;
+}*/
+
+.btn-default {
+    background-color: #e3e3e3;
+}
+
+.btn-xs {
+  font-size: 10px;
+}
+
+.navbar-inverse .navbar-text {
+  color: #fff;
+}
+
+.ime-disabled {
+  ime-mode:disabled;
+}
+
+.fm-ctr-rdonly {
+}
+.fm-ctr-rdonly[readonly],
+fieldset[disabled] .fm-ctr-rdonly {
+  cursor: pointer;
+  background-color: #fff;
+  opacity: 1;
+}
+
+.fm-ctr-rdonly-tx {
+}
+.fm-ctr-rdonly-tx[readonly],
+fieldset[disabled] ..fm-ctr-rdonly-tx {
+  cursor: not-allowed;  background-color: #eee;
+}
+
+
+/*
+.img-circle{behavior:url(/scripts/PIE.htc)}
+.img-rounded{behavior:url(/scripts/PIE.htc)}
+.img-thumbnail{behavior:url(/scripts/PIE.htc)}
+.table-bordered{behavior:url(/scripts/PIE.htc)}
+select,textarea,input,code,pre,kbd,pre{behavior:url(/scripts/PIE.htc)}
+.input-group-addon{behavior:url(/scripts/PIE.htc)}
+.btn{behavior:url(/scripts/PIE.htc)}
+.dropdown-menu{behavior:url(/scripts/PIE.htc)}
+.form-control{behavior:url(/scripts/PIE.htc)}
+.panel{behavior:url(/scripts/PIE.htc)}
+.well{behavior:url(/scripts/PIE.htc)}
+.nav-tabs > li > a{behavior:url(/scripts/PIE.htc)}
+.nav-pills > li > a{behavior:url(/scripts/PIE.htc)}
+.navbar{behavior:url(/scripts/PIE.htc)}
+.navbar-nav > li > a{behavior:url(/scripts/PIE.htc)}
+.navbar-toggle{behavior:url(/scripts/PIE.htc)}
+.navbar-toggle .icon-bar{behavior:url(/scripts/PIE.htc)}
+.breadcrumb{behavior:url(/scripts/PIE.htc)}
+.pagination{behavior:url(/scripts/PIE.htc)}
+.pager li > a,.pager li > span{behavior:url(/scripts/PIE.htc)}
+.modal-content{behavior:url(/scripts/PIE.htc)}
+.tooltip-inner{behavior:url(/scripts/PIE.htc)}
+.popover{behavior:url(/scripts/PIE.htc)}
+.popover-title{behavior:url(/scripts/PIE.htc)}
+.alert{behavior:url(/scripts/PIE.htc)}
+.thumbnail,.img-thumbnail{behavior:url(/scripts/PIE.htc)}
+.label{behavior:url(/scripts/PIE.htc)}
+.badge{behavior:url(/scripts/PIE.htc)}
+.progress{behavior:url(/scripts/PIE.htc)}
+.carousel-indicators li{behavior:url(/scripts/PIE.htc)}
+.jumbotron{behavior:url(/scripts/PIE.htc)}
+*/

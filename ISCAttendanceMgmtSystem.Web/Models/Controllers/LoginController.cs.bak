@@ -1,0 +1,112 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using SkillDiscriminantSystem.COM.Util.Database;
+using System.Data;
+using System.Text;
+using SkillDiscriminantSystem.COM.Entity.Session;
+using SkillDiscriminantSystem.COM.Models;
+using SkillDiscriminantSystem.BL.Login;
+using SkillDiscriminantSystem.COM.Util.Encrypt;
+
+namespace SkillDiscriminantSystem.Web.Controllers {
+
+    /// <summary>
+    /// ログイン用コントローラー
+    /// </summary>
+    public class LoginController : Controller {
+        #region メンバ変数
+        /// <summary>
+        /// ロガー
+        /// </summary>
+        private static NLog.Logger nlog = NLog.LogManager.GetCurrentClassLogger();
+
+        #endregion
+
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        public LoginController() {
+        }
+
+        // GET: Login
+        public ActionResult Index() {
+            return View();
+        }
+
+        /// <summary>
+        /// 初期表示
+        /// </summary>
+        /// <returns>ビュー</returns>
+        [AllowAnonymous]
+        public ActionResult Login(string returnUrl) {
+            //セッション全削除
+            Session.RemoveAll();
+            ///URL設定
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+
+        /// <summary>
+        /// ログオフ
+        /// </summary>
+        /// <returns>初期画面へリダイレクト</returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogOff() {
+            //セッション全削除
+            Session.RemoveAll();
+            return RedirectToAction("Login", "Login");
+        }
+
+        /// <summary>
+        /// ログイン処理
+        /// </summary>
+        /// <param name="model">ログインモデル</param>
+        /// <param name="returnUrl"></param>
+        /// <returns>TOPへリダイレクト</returns>
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Login(LoginViewModelSd model, string returnUrl) {
+            try {
+                //開始
+                nlog.Debug(System.Reflection.MethodBase.GetCurrentMethod().Name + " start");
+
+                //入力チェック
+                if(!ModelState.IsValid) { return View(model); }
+
+                //var encstring = EncryptUtil.EncryptString("test");
+
+                //ログイン処理
+                LoginBL bl = new LoginBL();
+                if(bl.Login(model.Id, model.Password, model)) { return RedirectToAction("Index", "Top"); }
+
+                //エラー判定
+                ModelState.AddModelError("", "無効なログイン試行です。");
+                return View(model);
+            } catch(Exception ex) {
+                // エラー
+                nlog.Error(System.Reflection.MethodBase.GetCurrentMethod().Name + " error " + ex.ToString());
+                TempData["Error"] = ex.ToString();
+                return View("Error");
+            } finally {
+                //終了
+                nlog.Debug(System.Reflection.MethodBase.GetCurrentMethod().Name + " end");
+            }
+        }
+
+        private ActionResult RedirectToLocal(string returnUrl) {
+            if(Url.IsLocalUrl(returnUrl)) {
+                return Redirect(returnUrl);
+            }
+            return RedirectToAction("Index", "Home");
+        }
+    }
+}

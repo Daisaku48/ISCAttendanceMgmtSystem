@@ -1,0 +1,29 @@
+﻿/*決裁権限検索用カラム幅*/
+/*年度*/
+.tblscroll td,
+.tblscroll th {
+  width: 35px;
+}
+/*氏名*/
+.tblscroll td + td + td,
+.tblscroll th + th + th{
+  width: 70px;
+}
+
+/*所属*/
+.tblscroll td+td+td+td,
+.tblscroll th+th+th+th{
+  width:38px;
+}
+
+/*上司～支社調整*/
+.tblscroll td+td+td+td+td,
+.tblscroll th+th+th+th+th{
+  width:75px;
+}
+
+/*表示ボタン*/
+.tblscroll td + td + td + td + td + td + td + td + td + td + td + td + td + td + td + td + td + td + td,
+.tblscroll th + th + th + th + th + th + th + th + th + th + th + th + th + th + th + th + th + th + th {
+  width: 50px;
+}

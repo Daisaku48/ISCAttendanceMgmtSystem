@@ -1,0 +1,75 @@
+﻿/*職能検索用カラム幅*/
+.tblscroll td,
+.tblscroll th {
+  width: 35px;
+}
+
+/*2列目(職掌)幅設定*/
+.tblscroll td + td,
+.tblscroll th + th {
+  width: 95px;
+}
+/*3列目(所属番号)幅設定*/
+.tblscroll td + td + td,
+.tblscroll th + th + th{
+  width: 55px;
+}
+/*4列目(異動日)幅設定*/
+.tblscroll td + td + td + td,
+.tblscroll th + th + th + th
+{
+  width: 75px;
+}
+/*5列目(資格)幅設定*/
+.tblscroll td + td + td + td + td,
+.tblscroll th + th + th + th + th {
+  width: 70px;
+}
+/*6列目(社員番号)幅設定*/
+.tblscroll td + td + td + td + td + td,
+.tblscroll th + th + th + th + th + th {
+  width: 60px;
+}
+/*7列目(氏名)幅設定*/
+.tblscroll td + td + td + td + td + td + td,
+.tblscroll th + th + th + th + th + th + th {
+  width: 95px;
+}
+
+/* 成績(非入力領域)幅,配置設定 */
+.tblscroll .grade {
+  width: 26px;
+  text-align:center;
+}
+
+/* 成績幅,配置設定 */
+.tblscroll .grade_input {
+  width: 40px;
+  text-align:center;
+}
+
+/* 成績(入力不能領域)幅設定 */
+.tblscroll .grade_not_input {
+  width: 40px;
+  text-align:center;
+}
+
+/* チェックボックス中央配置 */
+.sch-th-chk,
+.sch-td-chk {
+    text-align:center;
+}
+
+/* 成績(非入力領域)背景色 */
+td.grade {
+    background-color:#eeeeee;
+}
+
+/* 成績(入力不能領域)幅設定 */
+td.grade_not_input {
+    background-color:#eeeeee;
+}
+
+.no_change td {
+    background-color:#eeeeee;
+}

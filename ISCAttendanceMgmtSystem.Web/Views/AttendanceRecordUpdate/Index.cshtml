@@ -1,0 +1,246 @@
+﻿﻿@using ISCAttendanceMgmtSystem.COM.Entity.Session
+
+@using ISCAttendanceMgmtSystem.COM.Models
+@model AttendanceRecordUpdateModels
+
+@{
+    ViewBag.Title = "勤務実績修正";
+}
+@Styles.Render("~/Content/css/attend-upd")
+
+
+@using (Html.BeginForm("Index", "AttendanceRecordUpdate", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal" })) {
+    <!--検索項目-->
+    @Html.HiddenFor(m => m.Down.DownloadFlag)
+    <div class="row">
+        <div class="col-xs-offset-1 col-xs-10">
+            <!--タイトル-->
+            <h3 class="text-left">勤務実績修正</h3>
+        </div>
+    </div>
+
+    @Html.HiddenFor(m => m.Head.ViewType)
+    @Html.HiddenFor(m => m.Head.EmployeeNo)
+
+
+    //2023-10-30 iwai-tamura upd-str ------
+    var attrRadioA_1_1 = new Dictionary<string, object>() { { "name", "attrRadioA_1" }, { "id", "select_radioA_1_1" } };
+    var attrRadioA_1_2 = new Dictionary<string, object>() { { "name", "attrRadioA_1" }, { "id", "select_radioA_1_2" } };
+    var attrRadioA_1_3 = new Dictionary<string, object>() { { "name", "attrRadioA_1" }, { "id", "select_radioA_1_3" } };
+    //2023-10-30 iwai-tamura upd-end ------
+
+
+    <div class="row">
+        <div class="col-xs-offset-1 col-xs-10">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <br />
+
+    //検索条件
+    var ymdRead1 = new Dictionary<string, object>() { { "class", "search-input  ymd-control" }, { "maxlength", "10" }, { "style", "width:100px;" }, { "readonly", "readonly" } };
+
+    <div class="row">
+        <div class="col-xs-offset-1 col-xs-8">
+            <div class="search-group">
+                @*                <label class="search-title-label ">修正対象選択</label>*@
+                <label class="search1-label ">日付</label>
+                @Html.TextBoxFor(m => m.Search.Date, "{0:d}", ymdRead1)<button type="button" class="input-control btn btn-default btn-xs search-input" id="DateCancel" value="Search_Date"><i class="glyphicon glyphicon-remove"></i></button>
+                <label class="search2-label ">従業員</label>
+                
+                @*2023-10-30 iwai-tamura upd-str ---*@
+                @Html.DropDownList("Search.EmployeeData", ((IEnumerable<SelectListItem>)Model.Search.EmployeeItemList), "", new { @class = "search-input" })
+                @*@Html.DropDownList("Search.EmployeeNo", ((IEnumerable<SelectListItem>)Model.Search.EmployeeItemList), "", new { @class = "search-input" })*@
+                @*2023-10-30 iwai-tamura upd-end ---*@
+                <input type="button" name="DmySearchEx" value="検索" class="btn-default search-input" id="dmysearch" />
+                
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-offset-1 col-xs-8">
+            <hr class="group-border" />
+        </div>
+    </div>
+
+    //if (Model.Head.ViewType == "2") {
+    <!-- 修正データ入力 -->
+    //時、分リスト作成
+    var hourItems = new SelectListItem[] {
+                            new SelectListItem() { Value="01", Text="01" },new SelectListItem() { Value="02", Text="02" },new SelectListItem() { Value="03", Text="03" },new SelectListItem() { Value="04", Text="04" },new SelectListItem() { Value="05", Text="05" },
+                            new SelectListItem() { Value="06", Text="06" },new SelectListItem() { Value="07", Text="07" },new SelectListItem() { Value="08", Text="08" },new SelectListItem() { Value="09", Text="09" },new SelectListItem() { Value="10", Text="10" },
+                            new SelectListItem() { Value="11", Text="11" },new SelectListItem() { Value="12", Text="12" },new SelectListItem() { Value="13", Text="13" },new SelectListItem() { Value="14", Text="14" },new SelectListItem() { Value="15", Text="15" },
+                            new SelectListItem() { Value="16", Text="16" },new SelectListItem() { Value="17", Text="17" },new SelectListItem() { Value="18", Text="18" },new SelectListItem() { Value="19", Text="19" },new SelectListItem() { Value="20", Text="20" },
+                            new SelectListItem() { Value="21", Text="21" },new SelectListItem() { Value="22", Text="22" },new SelectListItem() { Value="23", Text="23" },new SelectListItem() { Value="24", Text="24" }
+    };
+    var minutesItems = new SelectListItem[] {
+                            new SelectListItem() { Value="00", Text="00" },
+                            new SelectListItem() { Value="01", Text="01" },new SelectListItem() { Value="02", Text="02" },new SelectListItem() { Value="03", Text="03" },new SelectListItem() { Value="04", Text="04" },new SelectListItem() { Value="05", Text="05" },
+                            new SelectListItem() { Value="06", Text="06" },new SelectListItem() { Value="07", Text="07" },new SelectListItem() { Value="08", Text="08" },new SelectListItem() { Value="09", Text="09" },new SelectListItem() { Value="10", Text="10" },
+                            new SelectListItem() { Value="11", Text="11" },new SelectListItem() { Value="12", Text="12" },new SelectListItem() { Value="13", Text="13" },new SelectListItem() { Value="14", Text="14" },new SelectListItem() { Value="15", Text="15" },
+                            new SelectListItem() { Value="16", Text="16" },new SelectListItem() { Value="17", Text="17" },new SelectListItem() { Value="18", Text="18" },new SelectListItem() { Value="19", Text="19" },new SelectListItem() { Value="20", Text="20" },
+                            new SelectListItem() { Value="21", Text="21" },new SelectListItem() { Value="22", Text="22" },new SelectListItem() { Value="23", Text="23" },new SelectListItem() { Value="24", Text="24" },new SelectListItem() { Value="25", Text="25" },
+                            new SelectListItem() { Value="26", Text="26" },new SelectListItem() { Value="27", Text="27" },new SelectListItem() { Value="28", Text="28" },new SelectListItem() { Value="29", Text="29" },new SelectListItem() { Value="30", Text="30" },
+                            new SelectListItem() { Value="31", Text="31" },new SelectListItem() { Value="32", Text="32" },new SelectListItem() { Value="33", Text="33" },new SelectListItem() { Value="34", Text="34" },new SelectListItem() { Value="35", Text="35" },
+                            new SelectListItem() { Value="36", Text="36" },new SelectListItem() { Value="37", Text="37" },new SelectListItem() { Value="38", Text="38" },new SelectListItem() { Value="39", Text="39" },new SelectListItem() { Value="40", Text="40" },
+                            new SelectListItem() { Value="41", Text="41" },new SelectListItem() { Value="42", Text="42" },new SelectListItem() { Value="43", Text="43" },new SelectListItem() { Value="44", Text="44" },new SelectListItem() { Value="45", Text="45" },
+                            new SelectListItem() { Value="46", Text="46" },new SelectListItem() { Value="47", Text="47" },new SelectListItem() { Value="48", Text="48" },new SelectListItem() { Value="49", Text="49" },new SelectListItem() { Value="50", Text="50" },
+                            new SelectListItem() { Value="51", Text="51" },new SelectListItem() { Value="52", Text="52" },new SelectListItem() { Value="53", Text="53" },new SelectListItem() { Value="54", Text="54" },new SelectListItem() { Value="55", Text="55" },
+                            new SelectListItem() { Value="56", Text="56" },new SelectListItem() { Value="57", Text="57" },new SelectListItem() { Value="58", Text="58" },new SelectListItem() { Value="59", Text="59" }
+    };
+
+    //2023-10-30 iwai-tamura upd-str ------
+    //勤務状況区分リスト
+    var AttendanceStatusItems = new SelectListItem[] {
+                            new SelectListItem() { Value="01", Text="出社" },new SelectListItem() { Value="02", Text="テレワーク" },new SelectListItem() { Value="11", Text="外出中" },new SelectListItem() { Value="81", Text="退勤済み" },new SelectListItem() { Value="91", Text="休み" }
+    };
+    //2023-10-30 iwai-tamura upd-end ------
+
+
+
+<div class="row">
+    <div class="col-xs-offset-1 col-xs-8">
+        <div class="input-group">
+            @*2023-10-30 iwai-tamura upd-str ------*@
+            <label class="input1-label ">修正内容　</label>
+            @Html.RadioButtonFor(m => m.Input.UpdateType, "22", attrRadioA_1_1)
+            <label class="radio-label input-control save-input updatetype-radio1-label" for="select_radioA_1_1">勤務時間及びステータス</label>
+            @Html.RadioButtonFor(m => m.Input.UpdateType, "20", attrRadioA_1_2)
+            <label class="radio-label input-control save-input updatetype-radio2-label" for="select_radioA_1_2">勤　務　時　間</label>
+            @Html.RadioButtonFor(m => m.Input.UpdateType, "21", attrRadioA_1_3)
+            <label class="radio-label input-control save-input updatetype-radio3-label" for="select_radioA_1_3">ス　テ　ー　タ　ス</label>
+            <br /><br />
+            @*2023-10-30 iwai-tamura upd-end ------*@
+
+            @*2023-10-30 iwai-tamura upd-str ------*@
+            @*修正内容によって制御する為、出勤時間クラスを追加*@
+            <label class="input1-label ">出勤時間　</label>
+            @Html.DropDownList("Input.InputBeginHour", new SelectList((IEnumerable<SelectListItem>)hourItems, "Value", "Text", Model.Input.InputBeginHour), "", new { @class = "attendancetime-input hour-input save-input" })
+            <label class="">:</label>
+            @Html.DropDownList("Input.InputBeginMinutes", new SelectList((IEnumerable<SelectListItem>)minutesItems, "Value", "Text", Model.Input.InputBeginMinutes), "", new { @class = "attendancetime-input minutes-input save-input" })
+            <label class="input2-label ">退勤時間　</label>
+            @Html.DropDownList("Input.InputFinishHour", new SelectList((IEnumerable<SelectListItem>)hourItems, "Value", "Text", Model.Input.InputFinishHour), "", new { @class = "attendancetime-input hour-input save-input" })
+            <label class="">:</label>
+            @Html.DropDownList("Input.InputFinishMinutes", new SelectList((IEnumerable<SelectListItem>)minutesItems, "Value", "Text", Model.Input.InputFinishMinutes), "", new { @class = "attendancetime-input minutes-input save-input" })
+            <br /><br />
+            @*<label class="input1-label ">出勤時間　</label>
+        @Html.DropDownList("Input.InputBeginHour", new SelectList((IEnumerable<SelectListItem>)hourItems, "Value", "Text", Model.Input.InputBeginHour), "", new { @class = "hour-input save-input" })
+        <label class="">:</label>
+        @Html.DropDownList("Input.InputBeginMinutes", new SelectList((IEnumerable<SelectListItem>)minutesItems, "Value", "Text", Model.Input.InputBeginMinutes), "", new { @class = "minutes-input save-input" })
+        <label class="input2-label ">退勤時間　</label>
+        @Html.DropDownList("Input.InputFinishHour", new SelectList((IEnumerable<SelectListItem>)hourItems, "Value", "Text", Model.Input.InputFinishHour), "", new { @class = "hour-input save-input" })
+        <label class="">:</label>
+        @Html.DropDownList("Input.InputFinishMinutes", new SelectList((IEnumerable<SelectListItem>)minutesItems, "Value", "Text", Model.Input.InputFinishMinutes), "", new { @class = "minutes-input save-input" })
+        <br /><br />*@
+            @*2023-10-30 iwai-tamura upd-end ------*@
+
+            @*2023-10-30 iwai-tamura upd-str ------*@
+            <label class="input1-label ">ステータス</label>
+            @Html.DropDownList("Input.AttendanceStatus", new SelectList((IEnumerable<SelectListItem>)AttendanceStatusItems, "Value", "Text", Model.Input.AttendanceStatus), "", new { id = "attendanceStatusDropdown", @class = "status-input save-input" })
+            <br /><br />
+            @*2023-10-30 iwai-tamura upd-end ------*@
+
+            @*2023-02-08 iwai-tamura upd-str ------*@
+            <label class="input-label ">事　　　由</label>
+            @*<label class="input-label ">備　　考</label>*@
+            @*2023-02-08 iwai-tamura upd-end ------*@
+            @Html.TextBoxFor(m => m.Input.InputComment, new { @class = "comment-input save-input" })
+        </div>
+        <div class="pull-right input-group align-bottom">
+            <input type="button" name="DmyCancel" value="取消" class="pull-right save-input" id="dmycancel" />
+            <br /><br />
+            <input type="button" name="DmySave" value="登録" class="pull-right save-input" id="dmysave" />
+        </div>
+    </div>
+</div>
+
+
+<!--一覧-->
+<div class="row top17">
+    <div class="col-xs-1"></div>
+        @*2023-10-30 iwai-tamura upd-str ------*@
+        <div class="col-xs-10">
+        @*<div class="col-xs-8">*@
+        @*2023-10-30 iwai-tamura upd-end ------*@
+        <label class="input-title-label ">更新履歴</label>
+        <table class="table-bordered table-striped table-ecell-show mb-zero table-sch">
+            <colgroup>
+                <col style="width:35px" />
+                <col style="width:105px" />
+                @*2023-10-30 iwai-tamura upd-str ------*@
+                <col style="width:140px" />                  @*処理区分*@
+                @*<col style="width:90px" />*@
+                @*2023-10-30 iwai-tamura upd-end ------*@
+                <col style="width:100px" />
+                <col style="width:70px" />
+                <col style="width:70px" />
+                @*2023-10-30 iwai-tamura upd-str ------*@
+                <col style="width:110px" />
+                <col style="width:432px" />
+                @*<col style="width:374px" />*@
+                @*2023-10-30 iwai-tamura upd-end ------*@
+            </colgroup>
+            <thead>
+                <tr style="background-color: #ebe2c5;" class="allCheck">
+                    <th class="sch-th">No</th>
+                    <th class="sch-th">処理日時</th>
+                    <th class="sch-th">処理区分</th>
+                    <th class="sch-th">処理者</th>
+                    <th class="sch-th">出勤時間</th>
+                    <th class="sch-th">退勤時間</th>
+                    @*2023-10-30 iwai-tamura upd-str ------*@
+                    <th class="sch-th">ステータス</th>
+                    @*2023-10-30 iwai-tamura upd-end ------*@
+                    @*2023-02-08 iwai-tamura upd-str ------*@
+                    <th class="sch-th">事由</th>
+                    @*<th class="sch-th">備考</th>*@
+                    @*2023-02-08 iwai-tamura upd-end ------*@
+                </tr>
+            </thead>
+        </table>
+
+        <table class="table table-bordered table-striped table-ecell-show scrollTable" style="height:520px;">
+            <tbody class="tblscroll" id="items" style="height:520px;">
+                @if (Model != null && Model.SearchResult != null) {
+                    foreach (AttendanceRecordUpdateListModel row in Model.SearchResult) {
+                        <tr>
+                            <td class="text-center" style="width: 35px;">@Html.DisplayTextFor(m => row.Number)</td>
+                            <td class="text-center" style="width: 105px;">@Html.DisplayTextFor(m => row.UpdateDateTimeView)</td>
+                            @*2023-10-30 iwai-tamura upd-str ------*@
+                            <td class="text-center" style="width: 140px;">@Html.DisplayTextFor(m => row.UpdateTypeName)</td>
+                            @*<td class="text-center" style="width: 90px;">@Html.DisplayTextFor(m => row.UpdateTypeName)</td>*@
+                            @*2023-10-30 iwai-tamura upd-end ------*@
+                            <td class="text-center" style="width: 100px;">@Html.DisplayTextFor(m => row.UpdateEmployeeName)</td>
+                            <td class="text-center" style="width: 70px;">@Html.DisplayTextFor(m => row.StampTimeBegin)</td>
+                            <td class="text-center" style="width: 70px;">@Html.DisplayTextFor(m => row.StampTimeFinish)</td>
+                            @*2023-10-30 iwai-tamura upd-str ------*@
+                            <td class="text-center" style="width: 110px;">@Html.DisplayTextFor(m => row.AttendanceStatusName)</td>
+                            <td class="text-left" style="width: 430px; max-width: 430px; ">@Html.DisplayTextFor(m => row.Comment)</td>
+                            @*<td class="text-left" style="width: 374px; max-width: 374px; ">@Html.DisplayTextFor(m => row.Comment)</td>*@
+                            @*2023-10-30 iwai-tamura upd-end ------*@
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@*}*@
+
+@*隠しボタンエリア*@
+<div style="height:0px;">
+    <button type="submit" name="SearchEx" value="検索" class="btn invisible" id="searchbutton">検索</button>
+    <button type="submit" name="Save" value="登録" class="btn invisible" id="savebutton" onclick="removeDisabled()">登録</button>
+    <button type="submit" name="Cancel" value="取消" class="btn invisible" id="cancelbutton" onclick="removeDisabled()">取消</button>
+</div>
+
+<div>
+    @if (Model.Down.DownloadFlag) {
+        //jsファイルで読込む形にする;
+        @Scripts.Render("~/Scripts/js/objp")
+    }
+</div>
+
+@Scripts.Render("~/Scripts/js/attend-upd")
+}

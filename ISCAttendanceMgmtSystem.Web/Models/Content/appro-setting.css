@@ -1,0 +1,11 @@
+﻿
+/*ドロップダウンリスト*/
+select {
+  min-width:160px;
+  max-width:160px;
+}
+/*textbox*/
+input{
+  max-width:350px;
+}
+

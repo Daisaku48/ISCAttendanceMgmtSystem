@@ -1,0 +1,236 @@
+﻿/*2022-99-99 iwai-shibuya add str*/
+
+/*標準時間表示コンテンツ*/
+.ViewTime-group {
+    margin: 50px;
+    min-height: 150px;
+    justify-content: center;
+}
+    .ViewTime-group > div > p {
+        min-height: 15px;
+        text-align: center;
+        vertical-align: bottom;
+    }
+
+/*出勤・退勤時間表示*/
+.view-work-time {
+    display: inline-block;
+    font-size: 35px;
+    width: 200px;
+    height: 50px;
+    border: none;
+    vertical-align: middle;
+    text-align: center;
+}
+
+/*出勤関連コンテンツ*/
+.begin-group {
+    display: block;
+    text-align: center;
+    margin: 20px;
+}
+
+.begin-group input[type="submit"] {
+    font-size: 22px;
+    width: 150px;
+    height: 50px;
+    padding: 0.5rem;
+    border-radius: .6rem;
+    border: none;
+    text-align: center;
+    color: #FFF;
+    letter-spacing: .1rem;
+    box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.15);
+    position: relative;
+    background-color: #FFB344;
+}
+
+.begin-group input[type="submit"]:active {
+    box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.15);
+}
+
+.begin-disabled {
+    display: inline-block;
+    font-size: 22px;
+    width: 150px;
+    height: 50px;
+    padding: 10px;
+    border-radius: .6rem;
+    border: none;
+    text-align: center;
+    color: #FFF;
+    letter-spacing: .1rem;
+    /*box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.15);*/
+    position: relative;
+    background-color: #FFD699;
+}
+/*退勤関連コンテンツ*/
+.finish-group {
+    display: block;
+    text-align: center;
+    margin: 20px;
+}
+
+/*2023-02-08 iwai-tamura upd-str ------*/
+.finish-group input[type="button"] {
+/*.finish-group input[type="submit"] {*/
+/*2023-02-08 iwai-tamura upd-end ------*/
+    font-size: 22px;
+    width: 150px;
+    height: 50px;
+    padding: 0.5rem;
+    border-radius: .6rem;
+    border: none;
+    text-align: center;
+    color: #FFF;
+    letter-spacing: .1rem;
+    box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.15);
+    position: relative;
+    /*2022-12-14 iwai-shibuya add str*/
+    background-color: #004cbb;
+    /*2022-12-14 iwai-shibuya add str*/
+}
+
+/*2023-02-08 iwai-tamura upd-str ------*/
+.finish-group input[type="button"]:active {
+/*.finish-group input[type="button"]:active {*/
+/*2023-02-08 iwai-tamura upd-end ------*/
+    box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.15);
+}
+.finish-disabled {
+    display: inline-block;
+    font-size: 22px;
+    width: 150px;
+    height: 50px;
+    padding: 10px;
+    border-radius: .6rem;
+    border: none;
+    text-align: center;
+    color: #FFF;
+    letter-spacing: .1rem;
+    /*box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.15);*/
+    position: relative;
+    background-color: #0068ff;
+}
+
+/*2023-10-30 iwai-tamura add str*/
+/*ステータス関連コンテンツ*/
+/*ステータス表示*/
+.view-status {
+    display: inline-block;
+    font-size: 30px;
+    width: 200px;
+    height: 50px;
+    border: none;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.status-group {
+    display: block;
+    text-align: center;
+    margin: 20px;
+}
+
+.status-group input[type="button"] {
+    font-size: 22px;
+    width: 150px;
+    height: 50px;
+    padding: 0.5rem;
+    border-radius: .6rem;
+    border: none;
+    text-align: center;
+    color: #FFF;
+    letter-spacing: .1rem;
+    box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.15);
+    position: relative;
+    background-color: #70b9a0;
+}
+
+.status-group input[type="button"]:active {
+    box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.15);
+}
+
+.status-disabled {
+    display: inline-block;
+    font-size: 22px;
+    width: 150px;
+    height: 50px;
+    padding: 10px;
+    border-radius: .6rem;
+    border: none;
+    text-align: center;
+    color: #FFF;
+    letter-spacing: .1rem;
+    /*box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.15);*/
+    position: relative;
+    background-color: #00A19D;
+}
+
+
+/*ステータス選択のダイアログボタン制御*/
+.vertical-buttons .ui-dialog-buttonpane .ui-dialog-buttonset {
+    float: none;
+}
+
+.vertical-buttons .ui-dialog-buttonpane button {
+    display: block;
+    margin: 0.5em auto;
+    float: none;
+    width: 150px; /* ボタンの幅を指定 */
+    height: 50px; /* ボタンの高さを指定 */
+    padding: 0.5rem;
+    font-size: 16px; /* フォントサイズを指定 */
+    border-radius: .6rem;
+    border: none;
+    text-align: center;
+    color: #FFF;
+    letter-spacing: .1rem;
+    box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.15);
+}
+
+/*ボタンスタイル*/
+/*出社*/
+div.ui-dialog .button-attend {
+    background: none;
+    background-color: #873E0E;
+}
+
+/*テレワーク*/
+div.ui-dialog .button-telework {
+    background: none;
+    background-color: #F3A4B4; /* 例: 青色 */
+}
+
+/*外出*/
+div.ui-dialog .button-out {
+    background: none;
+    background-color: #EF9201;
+}
+/*2023-10-30 iwai-tamura add end*/
+
+
+
+
+/*2023-02-01 iwai-shibuya add str*/
+img#updatelogo {
+    margin-top: 10px;
+    margin-right: 0px;
+    margin-left: 1150px;
+}
+/*2023-02-01 iwai-shibuya add end*/
+.table-scroll {
+    padding-left: 10px;
+    padding-right: 6px;
+}
+/*2023-02-08 iwai-tamura upd-str ------*/
+.upd-th {
+	color:#00A19D;
+	background-color: #e2dac2;
+}
+.ptn-th{
+	border-left: double 1px #ddd; 
+}
+/*2023-02-08 iwai-tamura upd-end ------*/
+
+/*2022-99-99 iwai-shibuya add end*/

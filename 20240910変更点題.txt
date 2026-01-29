@@ -1,0 +1,11 @@
+
+
+
+BL
+
+TopBL.cs
+
+VIEW
+D:\90_WebDvelop\ISCAttendanceMgmtSystem\ISCAttendanceMgmtSystem.Web\Views\Top\Index.cshtml
+
+D:\90_WebDvelop\ISCAttendanceMgmtSystem\ISCAttendanceMgmtSystem.Web\Scripts\js\attendance-record-update.js

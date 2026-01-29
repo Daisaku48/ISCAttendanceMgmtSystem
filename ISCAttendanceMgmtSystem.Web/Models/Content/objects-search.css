@@ -1,0 +1,52 @@
+﻿/*目標管理検索用カラム幅*/
+.tblscroll td,
+.tblscroll th {
+  width: 35px;
+}
+/*年度*/
+.tblscroll td + td,
+.tblscroll th + th {
+  width: 50px;
+}
+
+/*社員番号、所属番号*/
+.tblscroll td + td + td,
+.tblscroll th + th + th,
+.tblscroll td + td + td + td + td + td,
+.tblscroll th + th + th + th + th + th {
+  width: 60px;
+}
+/*氏名*/
+.tblscroll td + td + td + td,
+.tblscroll th + th + th + th
+{
+  width: 160px;
+}
+/*カナ氏名*/
+.tblscroll td + td + td + td + td,
+.tblscroll th + th + th + th + th {
+  width: 210px;
+}
+/*承認×2、*/
+.tblscroll td + td + td + td + td + td + td,
+.tblscroll th + th + th + th + th + th + th,
+.tblscroll td + td + td + td + td + td + td + td,
+.tblscroll th + th + th + th + th + th + th + th {
+  width: 120px;
+}
+
+/*表示、PDF*/
+.tblscroll td + td + td + td + td + td + td + td + td,
+.tblscroll th + th + th + th + th + th + th + th + th,
+.tblscroll td + td + td + td + td + td + td + td + td + td,
+.tblscroll th + th + th + th + th + th + th + th + th + th
+{
+  width: 60px;
+}
+
+/*表示、PDF*/
+.tblscroll td + td + td + td + td + td + td + td + td + td + td,
+.tblscroll th + th + th + th + th + th + th + th + th + th + th
+{
+  width: 63px;
+}
