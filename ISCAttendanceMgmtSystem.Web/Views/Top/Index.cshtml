@@ -6,6 +6,15 @@
 }
 @Styles.Render("~/Content/css/top")
 
+<div class="top-hero">
+    <div class="top-hero__content">
+        <span class="top-hero__badge">Attendance</span>
+        <h1 class="top-hero__title">勤怠管理システム</h1>
+        <p class="top-hero__subtitle">今日の出退勤・ステータスをスマートに管理します。</p>
+    </div>
+    <div class="top-hero__glow"></div>
+</div>
+
 
 
 <script type="text/javascript">
@@ -40,76 +49,87 @@
     @Html.HiddenFor(m => m.TopView.StandardDateTime)
     @Html.AntiForgeryToken()
 
-    @*標準時間表示コンテンツ*@
-    <div class="ViewTime-group">
-        <div>
-            <p><span id="Today"></span></p>
-            <p><span id="Time"></span></p>
+    <div class="top-dashboard">
+        <div class="top-dashboard__header">
+            <div>
+                <h2 class="top-dashboard__title">今日の操作</h2>
+                <p class="top-dashboard__note">打刻・ステータス変更はこちらから行います。</p>
+            </div>
+            @*2023-02-01 iwai-shibuya add-str ------*@
+            @*一覧更新*@
+            <div class="update-group">
+                <a href="@Url.Action("Index", "Top")" class="refresh-link" aria-label="一覧を更新">
+                    <img id="updatelogo" src="~/Content/img/update.png" height="30" />
+                </a>
+            </div>
+            @*2023-02-01 iwai-shibuya add-end ------*@
         </div>
-    </div>
 
-    @*出勤関連コンテンツ*@
-    <div class="begin-group">
-        @*2023-10-30 iwai-tamura upd-str ------*@
-        @if (Model.TopView.ViewStartTime == "" && Model.TopView.ViewEndTime == ""){
-        @*@if (Model.TopView.ViewStartTime == ""){*@
-        @*2023-10-30 iwai-tamura upd-str ------*@
-            <input type="submit" name="Begin" value="出勤" />
-        } else
-        {
-            <div class="begin-disabled">出勤</div>
-        }
+        @*標準時間表示コンテンツ*@
+        <div class="ViewTime-group">
+            <div>
+                <p><span id="Today"></span></p>
+                <p><span id="Time"></span></p>
+            </div>
+        </div>
 
-        @*2023-10-30 iwai-tamura upd-str ------*@
-        @*javascriptにてスタートタイムを使用する為、divタグにIDを追加*@
-        <div class="view-work-time" id="viewStartTime">
-            @*<div class="view-work-time">*@
+        <div class="top-actions">
+            @*出勤関連コンテンツ*@
+            <div class="begin-group">
+                @*2023-10-30 iwai-tamura upd-str ------*@
+                @if (Model.TopView.ViewStartTime == "" && Model.TopView.ViewEndTime == ""){
+                @*@if (Model.TopView.ViewStartTime == ""){*@
+                @*2023-10-30 iwai-tamura upd-str ------*@
+                    <input type="submit" name="Begin" value="出勤" />
+                } else
+                {
+                    <div class="begin-disabled">出勤</div>
+                }
+
+                @*2023-10-30 iwai-tamura upd-str ------*@
+                @*javascriptにてスタートタイムを使用する為、divタグにIDを追加*@
+                <div class="view-work-time" id="viewStartTime">
+                    @*<div class="view-work-time">*@
+                    @*2023-10-30 iwai-tamura upd-end ------*@
+                    @Html.DisplayFor(m => m.TopView.ViewStartTime)
+                </div>
+            </div>
+
+
+            @*2023-10-30 iwai-tamura upd-str ------*@
+            @*ステータス関連コンテンツ*@
+            <div class="status-group">
+                @if (Model.TopView.ViewStartTime == ""|| Model.TopView.ViewEndTime != "")
+                {
+                    <div class="status-disabled">ステータス</div>
+                } else
+                {
+                    <input type="button" id="dmyStatus" name="DmyStatus" value="ステータス" class="btn-default" />
+                }
+                <div class="view-status">
+                    @Html.DisplayFor(m => m.TopView.ViewStatus)
+                </div>
+            </div>
             @*2023-10-30 iwai-tamura upd-end ------*@
-            @Html.DisplayFor(m => m.TopView.ViewStartTime)
+
+            @*退勤関連コンテンツ*@
+            <div class="finish-group">
+                @if (Model.TopView.ViewEndTime == "")
+                {
+                    @*2023-02-08 iwai-tamura upd-str ------*@
+                    <input type="button" id="dmyFinish" name="DmyFinish" value="退勤" class="btn-default" />
+                    @*<input type="submit" id ="dmyFinish" name="DmyFinish" value="退勤" class="btn-default" />*@
+                    @*2023-02-08 iwai-tamura upd-end ------*@
+                } else
+                {
+                    <div class="finish-disabled">退勤</div>
+                }
+                <div class="view-work-time">
+                    @Html.DisplayFor(m => m.TopView.ViewEndTime)
+                </div>
+            </div>
         </div>
     </div>
-
-
-    @*2023-10-30 iwai-tamura upd-str ------*@
-    @*ステータス関連コンテンツ*@
-    <div class="status-group">
-        @if (Model.TopView.ViewStartTime == ""|| Model.TopView.ViewEndTime != "")
-        {
-            <div class="status-disabled">ステータス</div>
-        } else
-        {
-            <input type="button" id="dmyStatus" name="DmyStatus" value="ステータス" class="btn-default" />
-        }
-        <div class="view-status">
-            @Html.DisplayFor(m => m.TopView.ViewStatus)
-        </div>
-    </div>
-    @*2023-10-30 iwai-tamura upd-end ------*@
-
-    @*退勤関連コンテンツ*@
-    <div class="finish-group">
-        @if (Model.TopView.ViewEndTime == "")
-        {
-            @*2023-02-08 iwai-tamura upd-str ------*@
-            <input type="button" id="dmyFinish" name="DmyFinish" value="退勤" class="btn-default" />
-            @*<input type="submit" id ="dmyFinish" name="DmyFinish" value="退勤" class="btn-default" />*@
-            @*2023-02-08 iwai-tamura upd-end ------*@
-        } else
-        {
-            <div class="finish-disabled">退勤</div>
-        }
-        <div class="view-work-time">
-            @Html.DisplayFor(m => m.TopView.ViewEndTime)
-        </div>
-    </div>
-
-
-    @*2023-02-01 iwai-shibuya add-str ------*@
-    @*一覧更新*@
-    <div class="update-group">
-        <a href="@Url.Action("Index", "Top")"><img id="updatelogo" src="~/Content/img/update.png" height="30" /></a>
-    </div>
-    @*2023-02-01 iwai-shibuya add-end ------*@
 
     <!--一覧-->
     <div class="row top17">
@@ -242,4 +262,3 @@
     @Scripts.Render("~/Scripts/js/top")
 
 }
-
