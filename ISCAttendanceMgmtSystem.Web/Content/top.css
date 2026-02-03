@@ -1,16 +1,126 @@
 ﻿/*2022-99-99 iwai-shibuya add str*/
 
+.top-hero {
+    position: relative;
+    margin: 24px auto 12px;
+    max-width: 1200px;
+    padding: 32px 40px;
+    border-radius: 24px;
+    color: #fff;
+    background: linear-gradient(135deg, #1b3c8b 0%, #00a19d 100%);
+    box-shadow: 0 20px 40px rgba(10, 30, 60, 0.25);
+    overflow: hidden;
+}
+
+.top-hero__content {
+    position: relative;
+    z-index: 2;
+}
+
+.top-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    letter-spacing: .12rem;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.top-hero__title {
+    margin: 12px 0 8px;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.top-hero__subtitle {
+    margin: 0;
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+.top-hero__glow {
+    position: absolute;
+    top: -80px;
+    right: -120px;
+    width: 260px;
+    height: 260px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 70%);
+    opacity: 0.9;
+}
+
+.top-dashboard {
+    max-width: 1200px;
+    margin: 0 auto 28px;
+    padding: 24px 32px 32px;
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 0 16px 30px rgba(15, 40, 80, 0.12);
+}
+
+.top-dashboard__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.top-dashboard__title {
+    margin: 0;
+    font-size: 22px;
+    color: #1b2f5b;
+    font-weight: 700;
+}
+
+.top-dashboard__note {
+    margin: 6px 0 0;
+    color: #5d6b82;
+}
+
+.top-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 24px;
+}
+
 /*標準時間表示コンテンツ*/
 .ViewTime-group {
-    margin: 50px;
-    min-height: 150px;
+    margin: 18px 0 24px;
+    min-height: 120px;
     justify-content: center;
 }
-    .ViewTime-group > div > p {
-        min-height: 15px;
-        text-align: center;
-        vertical-align: bottom;
-    }
+
+.ViewTime-group > div > p {
+    min-height: 15px;
+    text-align: center;
+    vertical-align: bottom;
+    font-weight: 600;
+    color: #1d2c4f;
+}
+
+.update-group {
+    margin: 0;
+}
+
+.refresh-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 999px;
+    background: #f2f6ff;
+    box-shadow: 0 6px 12px rgba(15, 40, 80, 0.12);
+    transition: transform 0.2s ease;
+}
+
+.refresh-link:hover {
+    transform: translateY(-1px);
+}
 
 /*出勤・退勤時間表示*/
 .view-work-time {
@@ -27,7 +137,7 @@
 .begin-group {
     display: block;
     text-align: center;
-    margin: 20px;
+    margin: 0;
 }
 
 .begin-group input[type="submit"] {
@@ -68,7 +178,7 @@
 .finish-group {
     display: block;
     text-align: center;
-    margin: 20px;
+    margin: 0;
 }
 
 /*2023-02-08 iwai-tamura upd-str ------*/
@@ -129,7 +239,7 @@
 .status-group {
     display: block;
     text-align: center;
-    margin: 20px;
+    margin: 0;
 }
 
 .status-group input[type="button"] {
@@ -214,9 +324,7 @@ div.ui-dialog .button-out {
 
 /*2023-02-01 iwai-shibuya add str*/
 img#updatelogo {
-    margin-top: 10px;
-    margin-right: 0px;
-    margin-left: 1150px;
+    margin: 0;
 }
 /*2023-02-01 iwai-shibuya add end*/
 .table-scroll {

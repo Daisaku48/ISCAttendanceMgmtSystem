@@ -5,9 +5,9 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISCAttendanceMgmtSystem.Web", "ISCAttendanceMgmtSystem.Web\ISCAttendanceMgmtSystem.Web.csproj", "{8317AECB-FE94-42B2-AF1F-D838F856A13D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISCAttendanceMgmtSystem.BL", "ISCAttendanceMgmtSystem.Bl\ISCAttendanceMgmtSystem.BL.csproj", "{8DDFB692-8684-44EC-8D0D-4D17A886D812}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISCAttendanceMgmtSystem.BL", "ISCAttendanceMgmtSystem.BL\ISCAttendanceMgmtSystem.BL.csproj", "{8DDFB692-8684-44EC-8D0D-4D17A886D812}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISCAttendanceMgmtSystem.COM", "ISCAttendanceMgmtSystem.Com\ISCAttendanceMgmtSystem.COM.csproj", "{B275E2F7-376D-41DE-B910-55F6CE04DF60}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISCAttendanceMgmtSystem.COM", "ISCAttendanceMgmtSystem.COM\ISCAttendanceMgmtSystem.COM.csproj", "{B275E2F7-376D-41DE-B910-55F6CE04DF60}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -2,37 +2,60 @@
 @model LoginViewModelSd
 @{
     ViewBag.Title = "LOGIN";
+    var orgCode = Request.QueryString["P1"] ?? string.Empty;
+    var employeeNo = Request.QueryString["P2"] ?? string.Empty;
+    var loginDisplay = string.IsNullOrWhiteSpace(orgCode) && string.IsNullOrWhiteSpace(employeeNo)
+        ? string.Empty
+        : $"{orgCode}ー{employeeNo}";
 }
 
 @Styles.Render("~/Content/css/login")
 
-<div class="row">
-    <div class="col-xs-12">
-        <div class="">
-            <section id="loginForm">
-                @using (Html.BeginForm("Login", "Login", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                {
-                    <div class="change_form_top">
-                        <h1>LOGIN</h1>
-                        <p>ユーザーID、パスワードをご入力の上、</p>
-                        <p>「LOGIN」ボタンをクリックしてください。</p>
-                    </div>
+<div class="login-page">
+    <header class="login-header">
+        <h1 class="login-header__title">協力会社入退場記録システムメニュー</h1>
+    </header>
 
-                    @Html.AntiForgeryToken()
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-                    @Html.TextBoxFor(m => m.Id, new { @class = "form-control InputText", @placeholder = "ユーザID" })
-                    @Html.ValidationMessageFor(m => m.Id, "", new { @class = "text-danger" })
-
-                    @Html.PasswordFor(m => m.Password, new { @class = "form-control InputText", @placeholder = "パスワード" })
-                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                    <input type="submit" value="LOGIN" class="btn-default" />
-                }
-            </section>
+    <div class="login-content">
+        <div class="login-main">
+            <h2 class="login-main__title">入退場記録メインメニュー</h2>
+            <div class="login-main__action">
+                <a class="login-action" href="@Url.Action("Index", "Top")">イベント選択</a>
+            </div>
         </div>
+
+        <aside class="login-info">
+            <div class="login-info__row">
+                <span class="login-info__label">ログイン</span>
+                <span class="login-info__value">@loginDisplay</span>
+            </div>
+            <div class="login-info__row">
+                <span class="login-info__label">日付</span>
+                <span class="login-info__value" id="loginDate"></span>
+            </div>
+            <div class="login-info__row">
+                <span class="login-info__label">時刻</span>
+                <span class="login-info__value" id="loginTime"></span>
+            </div>
+        </aside>
     </div>
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+<script type="text/javascript">
+    (function () {
+        function pad(value) {
+            return value < 10 ? "0" + value : value;
+        }
+
+        function updateClock() {
+            var now = new Date();
+            var dateText = now.getFullYear() + "/" + pad(now.getMonth() + 1) + "/" + pad(now.getDate());
+            var timeText = pad(now.getHours()) + ":" + pad(now.getMinutes());
+            document.getElementById("loginDate").textContent = dateText;
+            document.getElementById("loginTime").textContent = timeText;
+        }
+
+        updateClock();
+        setInterval(updateClock, 60000);
+    })();
+</script>
