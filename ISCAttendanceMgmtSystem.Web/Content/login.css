@@ -17,15 +17,15 @@
 .login-header__title {
     margin: 0;
     color: #ffffff;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 700;
     letter-spacing: 0.08em;
 }
 
 .login-content {
-    max-width: 1000px;
-    margin: 60px auto 0;
-    padding: 0 32px;
+    max-width: 1100px;
+    margin: 40px auto 0;
+    padding: 0 24px;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -37,26 +37,20 @@
 }
 
 .login-main__title {
-    margin: 8px 0 80px;
-    font-size: 20px;
+    margin: 0 0 48px;
+    font-size: 22px;
     font-weight: 700;
-}
-
-.login-main__action {
-    display: flex;
-    justify-content: center;
-    width: 100%;
 }
 
 .login-action {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 260px;
-    height: 72px;
+    width: 280px;
+    height: 70px;
     background-color: #4a8edb;
     color: #ffffff;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 700;
     text-decoration: none;
     border-radius: 6px;
@@ -70,16 +64,16 @@
 }
 
 .login-info {
-    min-width: 200px;
-    padding-top: 4px;
+    min-width: 220px;
+    padding-top: 6px;
 }
 
 .login-info__row {
     display: flex;
     justify-content: space-between;
     gap: 16px;
-    margin-bottom: 8px;
-    font-size: 13px;
+    margin-bottom: 6px;
+    font-size: 14px;
 }
 
 .login-info__label {
@@ -90,7 +84,7 @@
 .login-info__value {
     color: #222;
     text-align: right;
-    min-width: 120px;
+    min-width: 110px;
 }
 
 /* ログイン画面 - */
@@ -308,11 +302,6 @@ input[type="submit"] {
     .login-content {
         flex-direction: column;
         gap: 24px;
-    }
-
-    .login-main__title {
-        margin-bottom: 40px;
-        text-align: center;
     }
 
     .login-action {
